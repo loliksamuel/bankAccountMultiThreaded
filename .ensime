@@ -1,0 +1,40 @@
+;; If your project contains a lot of files, it is advisable to enable (:disable-source-load-on-startup t)
+;; Otherwise Ensime might incur a massive lag at startup time
+;; See more information about that at http://aemoncannon.github.com/ensime/index.html
+
+(
+  :subprojects (
+    (
+      :name "scala-lab"
+      :module-name "scala-lab"
+      :depends-on-modules (
+
+      )
+      :package "default"
+      :version "0.1-SNAPSHOT"
+      :compile-deps (
+        "/home/tony/.sbt/boot/scala-2.9.2/lib/scala-library.jar"
+      )
+      :runtime-deps (
+        "/home/tony/.sbt/boot/scala-2.9.2/lib/scala-library.jar"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/classes"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/classes"
+      )
+      :test-deps (
+        "/home/tony/.sbt/boot/scala-2.9.2/lib/scala-library.jar"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/classes"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/test-classes"
+      )
+      :source-roots (
+        "/home/tony/repo/perso/scala-lab/src/main/scala"
+        "/home/tony/repo/perso/scala-lab/src/main/java"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/src_managed/main"
+        "/home/tony/repo/perso/scala-lab/src/test/scala"
+        "/home/tony/repo/perso/scala-lab/src/test/java"
+        "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/src_managed/test"
+      )
+      :target "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/classes"
+      :test-target "/home/tony/repo/perso/scala-lab/target/scala-2.9.2/test-classes"
+    )
+  )
+)
