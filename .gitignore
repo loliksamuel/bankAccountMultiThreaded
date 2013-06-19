@@ -1,3 +1,5 @@
 /.ensime_lucene/
 /target/
 /project/target/
+/.idea/
+*.iml
