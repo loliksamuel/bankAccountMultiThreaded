@@ -2,8 +2,8 @@ package hello;
 
 object Hi {
   def main(args: Array[String]) :Unit = {
-    val user = "tony";
-    println("Hello " + user + "!");
+    if (args.length > 0)
+      println("Hello " + args(0) + "!");
 
     val m = max(1,2);
     println("the max is:" + m);
