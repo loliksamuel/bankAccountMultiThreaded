@@ -9,6 +9,8 @@ object Hi {
     println("the max is:" + m)
 
     playWithMap()
+
+    println(factorial(30));
   }
 
   def max(x: Int, y: Int): Int = {
@@ -21,4 +23,7 @@ object Hi {
 
     println(capitals("France"));
   }
+
+  def factorial(x: BigInt): BigInt =
+    if (x == 0) 1 else x * factorial(x-1)
 }
