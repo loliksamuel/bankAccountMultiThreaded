@@ -7,9 +7,18 @@ object Hi {
 
     val m = max(1, 2)
     println("the max is:" + m)
+
+    playWithMap()
   }
 
   def max(x: Int, y: Int): Int = {
     if (x > y) x else y
+  }
+
+  def playWithMap(): Unit = {
+    val capitals = Map("US" -> "Washington",
+                       "France" -> "Paris")
+
+    println(capitals("France"));
   }
 }
