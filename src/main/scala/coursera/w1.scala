@@ -2,7 +2,7 @@ package coursera
 
 import math.abs
 
-object session {
+object w1 {
 
   def sqrt(x: Double) = {
     def sqrtIter(guess: Double): Double =
