@@ -1,8 +1,16 @@
 package coursera
 
+import scala.annotation.tailrec
+
 object w3 {
-  def sum(a: Int, b: Int, fn: Int => Int): Int =
-    if(a > b) 0 else fn(a) + sum(a + 1, b, fn)
+  def sum(a: Int, b: Int, fn: Int => Int): Int = {
+
+    @tailrec
+    def sumTR(x: Int, r: Int): Int =
+      if(x > b) r else sumTR(x + 1, fn(x) + r)
+
+    sumTR(a, 0)
+  }
 
   // sum of the integers between a and b
   def sumInts(a: Int, b: Int): Int =
@@ -45,4 +53,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 0 s, completed 22 juil. 2013 15:40:33
+// [success] Total time: 1 s, completed 22 juil. 2013 15:47:06
