@@ -3,13 +3,13 @@ package coursera
 import scala.annotation.tailrec
 
 object w3 {
-  def sum(fn: Int => Int): (Int, Int) => Int = {
+  def sum(fn: Int => Int) (a: Int, b: Int): Int = {
 
     @tailrec
-    def sumTR(a: Int, b: Int, r: Int): Int =
-      if(a > b) r else sumTR(a + 1, b, fn(a) + r)
+    def sumTR(a: Int, r: Int): Int =
+      if(a > b) r else sumTR(a + 1, fn(a) + r)
 
-    (a, b) => sumTR(a, b, 0)
+    sumTR(a, 0)
   }
 
   def main(args: Array[String]) = {
@@ -43,4 +43,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 0 s, completed 22 juil. 2013 16:10:28
+// [success] Total time: 1 s, completed 22 juil. 2013 16:13:13
