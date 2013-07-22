@@ -16,8 +16,9 @@ object w2 {
     fact(n, 1)
   }
 
+  def title(s: String) = println("\n######### " + s + "\n")
+
   def main(args: Array[String]) = {
-    def title(s: String) = println("\n######### " + s + "\n")
 
     title("gcd")
     val values = List(Tuple2(2, 4),

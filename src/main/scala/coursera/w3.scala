@@ -18,14 +18,34 @@ object w3 {
     sum(a, b, w2.factorial)
 
   def main(args: Array[String]) = {
-    println(sumInts(1, 10))
-    println(sumCubes(1, 10))
-    println(sumFactorials(1, 10))
+    val values = List(Tuple2(1, 10),
+                      Tuple2(10, 20))
+
+    val functions : Map[String, (Int, Int) => Int] =
+      Map("sumInts"       -> sumInts,
+          "sumCubes"      -> sumCubes,
+          "sumFactorials" -> sumFactorials)
+
+    def displayResult(fnName: String, a: Int, b: Int, r: Int): String =
+      fnName + "(" + a + ", " + b + ") = " + r
+
+    functions.foreach { case (fnName, fn) =>
+      (for ((a, b) <- values)
+         println(displayResult(fnName, a, b, fn(a, b))))
+    }
+
+    w2.title("end")
   }
 }
 
 // [info] Running coursera.w3
-// 55
-// 3025
-// 4037913
-// [success] Total time: 1 s, completed 22 juil. 2013 15:11:55
+// sumInts(1, 10) = 55
+// sumInts(10, 20) = 165
+// sumCubes(1, 10) = 3025
+// sumCubes(10, 20) = 42075
+// sumFactorials(1, 10) = 4037913
+// sumFactorials(10, 20) = 267631616
+
+// ######### end
+
+// [success] Total time: 2 s, completed 22 juil. 2013 15:38:09
