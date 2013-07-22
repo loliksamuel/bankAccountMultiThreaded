@@ -8,11 +8,8 @@ object w3 {
   def sumInts(a: Int, b: Int): Int =
     sum(a, b, identity)
 
-  def sumCubes(a: Int, b: Int) :Int = {
-    def cube(a: Int): Int = a * a * a
-
-    sum(a, b, cube)
-  }
+  def sumCubes(a: Int, b: Int) :Int =
+    sum(a, b, (x: Int) => x * x * x)
 
   def sumFactorials(a: Int, b: Int): Int =
     sum(a, b, w2.factorial)
@@ -48,4 +45,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 2 s, completed 22 juil. 2013 15:38:09
+// [success] Total time: 0 s, completed 22 juil. 2013 15:40:33
