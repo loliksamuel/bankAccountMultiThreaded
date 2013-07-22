@@ -3,22 +3,16 @@ package coursera
 import scala.annotation.tailrec
 
 object w3 {
-  def sum(fn: Int => Int) (a: Int, b: Int): Int = {
-
+  def fold(fn: Int => Int, op: (Int, Int) => Int, initial: Int)(a: Int, b: Int): Int = {
     @tailrec
     def loop(a: Int, r: Int): Int =
-      if(a > b) r else loop(a + 1, fn(a) + r)
+      if(a > b) r else loop(a + 1, op(fn(a), r))
 
-    loop(a, 0)
+    loop(a, initial)
   }
 
-  def pdt(fn: Int => Int) (a: Int, b: Int): Int = {
-    @tailrec
-    def loop(a: Int, r: Int): Int =
-      if(a > b) r else loop(a + 1, fn(a) * r)
-
-    loop(a, 1)
-  }
+  def sum(fn: Int => Int) (a: Int, b: Int): Int = fold(fn, (x, y) => x + y, 0)(a, b)
+  def pdt(fn: Int => Int) (a: Int, b: Int): Int = fold(fn, (x, y) => x * y, 1)(a, b)
 
   def factorial(n: Int) = pdt(identity)(1, n)
 
@@ -51,7 +45,8 @@ object w3 {
   }
 }
 
-// [info] Running coursera.w3
+// ######### sum of a function values (cube, factorial, etc...)
+
 // sumInts(1, 10) = 55
 // sumInts(10, 20) = 165
 // sumCubes(1, 10) = 3025
@@ -59,6 +54,18 @@ object w3 {
 // sumFactorials(1, 10) = 4037913
 // sumFactorials(10, 20) = 267631616
 
+// ######### factorial
+
+// 1
+// 2
+// 6
+// 24
+// 120
+// 720
+// 5040
+// 40320
+// 362880
+
 // ######### end
 
-// [success] Total time: 1 s, completed 22 juil. 2013 16:13:13
+// [success] Total time: 1 s, completed 22 juil. 2013 18:19:56
