@@ -3,7 +3,7 @@ package coursera
 import scala.annotation.tailrec
 
 object w3 {
-  def sum(a: Int, b: Int, fn: Int => Int): Int = {
+  def sum(fn: Int => Int, a: Int, b: Int): Int = {
 
     @tailrec
     def sumTR(x: Int, r: Int): Int =
@@ -14,13 +14,13 @@ object w3 {
 
   // sum of the integers between a and b
   def sumInts(a: Int, b: Int): Int =
-    sum(a, b, identity)
+    sum(identity, a, b)
 
   def sumCubes(a: Int, b: Int) :Int =
-    sum(a, b, x => x * x * x)
+    sum(x => x * x * x, a, b)
 
   def sumFactorials(a: Int, b: Int): Int =
-    sum(a, b, w2.factorial)
+    sum(w2.factorial, a, b)
 
   def main(args: Array[String]) = {
     val values = List(Tuple2(1, 10),
@@ -53,4 +53,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 1 s, completed 22 juil. 2013 15:47:06
+// [success] Total time: 1 s, completed 22 juil. 2013 15:58:02
