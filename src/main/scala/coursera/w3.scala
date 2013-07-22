@@ -20,14 +20,18 @@ object w3 {
     loop(a, 1)
   }
 
+  def factorial(n: Int) = pdt(identity)(1, n)
+
   def main(args: Array[String]) = {
+    w2.title("sum of a function values (cube, factorial, etc...)")
+
     val values = List(Tuple2(1, 10),
                       Tuple2(10, 20))
 
     val functions : Map[String, (Int, Int) => Int] =
       Map("sumInts"       -> sum(identity),
           "sumCubes"      -> sum(x => x * x * x),
-          "sumFactorials" -> sum(w2.factorial))
+          "sumFactorials" -> sum(factorial))
 
     def displayResult(fnName: String, a: Int, b: Int, r: Int): String =
       fnName + "(" + a + ", " + b + ") = " + r
@@ -36,6 +40,12 @@ object w3 {
       (for ((a, b) <- values)
          println(displayResult(fnName, a, b, fn(a, b))))
     }
+
+    w2.title("factorial")
+
+    val fvalues = List(1,2,3,4,5,6,7,8,9)
+
+    fvalues.map(factorial).map(println)
 
     w2.title("end")
   }
