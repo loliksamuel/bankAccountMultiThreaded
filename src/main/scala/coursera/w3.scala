@@ -3,24 +3,24 @@ package coursera
 import scala.annotation.tailrec
 
 object w3 {
-  def sum(fn: Int => Int, a: Int, b: Int): Int = {
+  def sum(fn: Int => Int): (Int, Int) => Int = {
 
     @tailrec
-    def sumTR(x: Int, r: Int): Int =
-      if(x > b) r else sumTR(x + 1, fn(x) + r)
+    def sumTR(a: Int, b: Int, r: Int): Int =
+      if(a > b) r else sumTR(a + 1, b, fn(a) + r)
 
-    sumTR(a, 0)
+    (a, b) => sumTR(a, b, 0)
   }
 
   // sum of the integers between a and b
   def sumInts(a: Int, b: Int): Int =
-    sum(identity, a, b)
+    sum(identity)(a, b)
 
   def sumCubes(a: Int, b: Int) :Int =
-    sum(x => x * x * x, a, b)
+    sum(x => x * x * x)(a, b)
 
   def sumFactorials(a: Int, b: Int): Int =
-    sum(w2.factorial, a, b)
+    sum(w2.factorial)(a, b)
 
   def main(args: Array[String]) = {
     val values = List(Tuple2(1, 10),
