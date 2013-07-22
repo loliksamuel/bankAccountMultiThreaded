@@ -6,10 +6,18 @@ object w3 {
   def sum(fn: Int => Int) (a: Int, b: Int): Int = {
 
     @tailrec
-    def sumTR(a: Int, r: Int): Int =
-      if(a > b) r else sumTR(a + 1, fn(a) + r)
+    def loop(a: Int, r: Int): Int =
+      if(a > b) r else loop(a + 1, fn(a) + r)
 
-    sumTR(a, 0)
+    loop(a, 0)
+  }
+
+  def pdt(fn: Int => Int) (a: Int, b: Int): Int = {
+    @tailrec
+    def loop(a: Int, r: Int): Int =
+      if(a > b) r else loop(a + 1, fn(a) * r)
+
+    loop(a, 1)
   }
 
   def main(args: Array[String]) = {
