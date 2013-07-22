@@ -13,14 +13,11 @@ object w3 {
   }
 
   // sum of the integers between a and b
-  def sumInts(a: Int, b: Int): Int =
-    sum(identity)(a, b)
+  def sumInts = sum(identity)
 
-  def sumCubes(a: Int, b: Int) :Int =
-    sum(x => x * x * x)(a, b)
+  def sumCubes = sum(x => x * x * x)
 
-  def sumFactorials(a: Int, b: Int): Int =
-    sum(w2.factorial)(a, b)
+  def sumFactorials = sum(w2.factorial)
 
   def main(args: Array[String]) = {
     val values = List(Tuple2(1, 10),
@@ -53,4 +50,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 1 s, completed 22 juil. 2013 15:58:02
+// [success] Total time: 1 s, completed 22 juil. 2013 16:04:58
