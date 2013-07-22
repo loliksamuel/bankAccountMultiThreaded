@@ -10,11 +10,14 @@ object w32 {
 
   def fixedPoint(f: Double => Double) (firstGuess: Double) = {
     def iterate(guess: Double): Double = {
-      val next = f(guess)
+      val next = averageDamp(f)(guess)
       if(isCloseEnough(guess, next)) next else iterate(next)
     }
     iterate(firstGuess)
   }
+
+  def averageDamp(f: Double => Double)(x: Double) :Double =
+    (x + f(x)) / 2
 
   def main(args: Array[String]) = {
     println(fixedPoint(x => 1 + x/2)(1))
