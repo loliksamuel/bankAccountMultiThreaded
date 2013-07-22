@@ -9,7 +9,7 @@ object w3 {
     sum(a, b, identity)
 
   def sumCubes(a: Int, b: Int) :Int =
-    sum(a, b, (x: Int) => x * x * x)
+    sum(a, b, x => x * x * x)
 
   def sumFactorials(a: Int, b: Int): Int =
     sum(a, b, w2.factorial)
