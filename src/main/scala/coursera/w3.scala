@@ -12,21 +12,14 @@ object w3 {
     (a, b) => sumTR(a, b, 0)
   }
 
-  // sum of the integers between a and b
-  def sumInts = sum(identity)
-
-  def sumCubes = sum(x => x * x * x)
-
-  def sumFactorials = sum(w2.factorial)
-
   def main(args: Array[String]) = {
     val values = List(Tuple2(1, 10),
                       Tuple2(10, 20))
 
     val functions : Map[String, (Int, Int) => Int] =
-      Map("sumInts"       -> sumInts,
-          "sumCubes"      -> sumCubes,
-          "sumFactorials" -> sumFactorials)
+      Map("sumInts"       -> sum(identity),
+          "sumCubes"      -> sum(x => x * x * x),
+          "sumFactorials" -> sum(w2.factorial))
 
     def displayResult(fnName: String, a: Int, b: Int, r: Int): String =
       fnName + "(" + a + ", " + b + ") = " + r
@@ -50,4 +43,4 @@ object w3 {
 
 // ######### end
 
-// [success] Total time: 1 s, completed 22 juil. 2013 16:04:58
+// [success] Total time: 0 s, completed 22 juil. 2013 16:10:28
