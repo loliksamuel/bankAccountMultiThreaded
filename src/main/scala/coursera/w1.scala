@@ -9,7 +9,7 @@ object session {
     else sqrtIter(improve(guess, x), x)
 
   def isGoodEnough(guess: Double, x: Double) =
-    abs(guess * guess - x) < 0.001
+    abs(guess * guess - x) / x < 0.001
 
   def improve(guess: Double, x: Double) =
     (guess + x/guess) / 2
@@ -17,7 +17,7 @@ object session {
   def sqrt(x: Double) = sqrtIter(1.0, x)
 
   def main(args: Array[String]) = {
-    val values = List(2.0, 4.0, 1e-6, 0.001, 0.1e-20, 1.0e20/*, 1.0e50*/)
+    val values = List(2.0, 4.0, 1e-6, 0.001, 0.1e-20, 1.0e20, 1.0e50)
 
     val squareValues = values.map(v => List(v, sqrt(v)))
 
@@ -25,13 +25,12 @@ object session {
   }
 }
 
-// [info] Running coursera.session 4
+// [info] Running coursera.session
 // List(2.0, 1.4142156862745097)
-// List(4.0, 2.0000000929222947)
-// List(1.0E-6, 0.031260655525445276)
-// List(0.001, 0.04124542607499115)
-// List(1.0E-21, 0.03125)
-// List(1.0E20, 1.0E10)
-// sqrt(1.0E20): 1.0E10
-// ^D^D  C-c C-c^C
-// Process sbt exited abnormally with code 130
+// List(4.0, 2.000609756097561)
+// List(1.0E-6, 0.0010000001533016628)
+// List(0.001, 0.03162278245070105)
+// List(1.0E-21, 3.1633394544890125E-11)
+// List(1.0E20, 1.0000021484861237E10)
+// List(1.0E50, 1.0000003807575104E25)
+// [success] Total time: 1 s, completed 22 juil. 2013 11:43:47
