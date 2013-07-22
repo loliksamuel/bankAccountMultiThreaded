@@ -4,17 +4,19 @@ import math.abs
 
 object session {
 
-  def sqrtIter(guess: Double, x: Double): Double =
-    if (isGoodEnough(guess, x)) guess
-    else sqrtIter(improve(guess, x), x)
+  def sqrt(x: Double) = {
+    def sqrtIter(guess: Double, x: Double): Double =
+      if (isGoodEnough(guess, x)) guess
+      else sqrtIter(improve(guess, x), x)
 
-  def isGoodEnough(guess: Double, x: Double) =
-    abs(guess * guess - x) / x < 0.001
+    def isGoodEnough(guess: Double, x: Double) =
+      abs(guess * guess - x) / x < 0.001
 
-  def improve(guess: Double, x: Double) =
-    (guess + x/guess) / 2
+    def improve(guess: Double, x: Double) =
+      (guess + x/guess) / 2
 
-  def sqrt(x: Double) = sqrtIter(1.0, x)
+    sqrtIter(1.0, x)
+  }
 
   def main(args: Array[String]) = {
     val values = List(2.0, 4.0, 1e-6, 0.001, 0.1e-20, 1.0e20, 1.0e50)
@@ -33,4 +35,4 @@ object session {
 // List(1.0E-21, 3.1633394544890125E-11)
 // List(1.0E20, 1.0000021484861237E10)
 // List(1.0E50, 1.0000003807575104E25)
-// [success] Total time: 1 s, completed 22 juil. 2013 11:43:47
+// [success] Total time: 1 s, completed 22 juil. 2013 11:58:50
