@@ -7,6 +7,8 @@ class Rational(x: Int, y: Int) {
   def add(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
 
+  def neg(): Rational = new Rational(-numer, denom)
+
   override def toString(): String = numer + "/" + denom
 }
 
@@ -16,9 +18,12 @@ object Rational {
     val r1 = new Rational(2, 3)
 
     println(r0.add(r1))
+    println(r0.neg)
+
   }
 }
 
 // [info] Running coursera.Rational
 // 7/6
-// [success] Total time: 2 s, completed 23 juil. 2013 09:52:37
+// -1/2
+// [success] Total time: 1 s, completed 23 juil. 2013 09:55:13
