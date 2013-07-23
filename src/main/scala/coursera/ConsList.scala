@@ -1,13 +1,13 @@
 package coursera
 
-trait IntList {
+trait List[T] {
 
 }
 
-class Nil extends IntList {
+class Nil[T] extends List[T] {
 
 }
 
-class Cons(val head: Int, val tail: IntList) extends IntList {
+class Cons[T](val head: T, val tail: List[T]) extends List[T] {
 
 }
