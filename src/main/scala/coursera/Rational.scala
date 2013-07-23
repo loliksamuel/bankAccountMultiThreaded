@@ -5,8 +5,8 @@ import scala.annotation.tailrec
 class Rational(x: Int, y: Int) {
   private val g = w2.gcd(x, y)
 
-  def numer = x / g
-  def denom = y / g
+  val numer = x / g
+  val denom = y / g
 
   def add(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
