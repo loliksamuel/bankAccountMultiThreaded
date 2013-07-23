@@ -7,10 +7,8 @@ class Rational(x: Int, y: Int) {
 
   def this(x: Int) = this(x, 1)
 
-  private val g = w2.gcd(x, y)
-
-  val numer = x / g
-  val denom = y / g
+  val numer = x
+  val denom = y
 
   def add(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
@@ -23,7 +21,10 @@ class Rational(x: Int, y: Int) {
 
   def max(r: Rational): Rational = if (less(r)) r else this
 
-  override def toString(): String = numer + "/" + denom
+  override def toString(): String = {
+    val g = w2.gcd(numer, denom)
+    numer / g + "/" + denom / g
+  }
 }
 
 object Rational {
@@ -57,19 +58,5 @@ object Rational {
 // false
 // 5/7
 // 5/7
-// [error] (run-main) java.lang.IllegalArgumentException: requirement failed: denominator must be non zero
-// java.lang.IllegalArgumentException: requirement failed: denominator must be non zero
-// 	at scala.Predef$.require(Predef.scala:214)
-// 	at coursera.Rational.<init>(Rational.scala:6)
-// 	at coursera.Rational$.main(Rational.scala:42)
-// 	at coursera.Rational.main(Rational.scala)
-// 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-// 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-// 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-// 	at java.lang.reflect.Method.invoke(Method.java:606)
-// [trace] Stack trace suppressed: run last compile:run for the full output.
-// java.lang.RuntimeException: Nonzero exit code: 1
-// 	at scala.sys.package$.error(package.scala:27)
-// [trace] Stack trace suppressed: run last compile:run for the full output.
-// [error] (compile:run) Nonzero exit code: 1
-// [error] Total time: 1 s, completed 23 juil. 2013 10:47:01
+// 2/1
+// [success] Total time: 1 s, completed 23 juil. 2013 11:02:08
