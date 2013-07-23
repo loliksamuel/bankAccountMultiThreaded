@@ -3,6 +3,8 @@ package coursera
 class Rational(x: Int, y: Int) {
   def numer = x
   def denom = y
+
+  override def toString(): String = "{n: " + numer + ", d: " + denom + "}"
 }
 
 object Rational {
