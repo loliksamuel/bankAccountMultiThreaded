@@ -2,13 +2,10 @@ package coursera
 
 import scala.annotation.tailrec
 
-class Rational(x: Int, y: Int) {
-  require(y != 0, "denominator must be non zero")
+class Rational(val numer: Int, val denom: Int) {
+  require(denom != 0, "denominator must be non zero")
 
-  def this(x: Int) = this(x, 1)
-
-  val numer = x
-  val denom = y
+  def this(numer: Int) = this(numer, 1)
 
   def +(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
@@ -59,4 +56,4 @@ object Rational {
 // 5/7
 // 5/7
 // 2/1
-// [success] Total time: 1 s, completed 23 juil. 2013 11:30:15
+// [success] Total time: 3 s, completed 23 juil. 2013 14:32:46
