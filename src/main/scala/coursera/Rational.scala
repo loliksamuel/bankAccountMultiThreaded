@@ -1,8 +1,12 @@
 package coursera
 
+import scala.annotation.tailrec
+
 class Rational(x: Int, y: Int) {
-  def numer = x
-  def denom = y
+  private val g = w2.gcd(x, y)
+
+  def numer = x / g
+  def denom = y / g
 
   def add(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
@@ -23,12 +27,15 @@ object Rational {
     println(x.add(y))
     println(y.neg)
     println(x.sub(x))
-
     println(x.sub(y).sub(z))
+    println(y.add(y))
   }
 }
 
 // [info] Running coursera.Rational
-// 7/6
-// -1/2
-// [success] Total time: 1 s, completed 23 juil. 2013 09:55:13
+// 22/21
+// 5/-7
+// 0/1
+// -79/42
+// 10/7
+// [success] Total time: 1 s, completed 23 juil. 2013 10:23:26
