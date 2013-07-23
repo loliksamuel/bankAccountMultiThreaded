@@ -13,9 +13,9 @@ class Rational(x: Int, y: Int) {
   def +(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
 
-  def neg(): Rational = new Rational(-numer, denom)
+  def unary_-(): Rational = new Rational(-numer, denom)
 
-  def -(r: Rational): Rational = this + r.neg
+  def -(r: Rational): Rational = this + -r
 
   def < (r: Rational): Boolean = numer * r.denom < r.numer * denom
 
@@ -34,7 +34,7 @@ object Rational {
     val z = new Rational(3, 2)
 
     println(x + y)
-    println(y neg)
+    println(-y)
     println(x + x)
     println(x - y - z)
     println(y + y)
@@ -59,4 +59,4 @@ object Rational {
 // 5/7
 // 5/7
 // 2/1
-// [success] Total time: 0 s, completed 23 juil. 2013 11:27:54
+// [success] Total time: 1 s, completed 23 juil. 2013 11:30:15
