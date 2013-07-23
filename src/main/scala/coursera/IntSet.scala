@@ -11,9 +11,9 @@ abstract class IntSet {
   def contains(x: Int): Boolean
 }
 
-class Empty extends IntSet {
+object Empty extends IntSet {
   def contains(x: Int): Boolean = false
-  def incl(x: Int): IntSet = new Leaf(x, new Empty, new Empty)
+  def incl(x: Int): IntSet = new Leaf(x, Empty, Empty)
 
   override def toString = "."
 }
@@ -36,8 +36,8 @@ class Leaf(elem: Int, l: IntSet, r: IntSet) extends IntSet {
 object IntSet {
   def main(args: Array[String]) = {
     val t1 = new Leaf(7,
-                      new Leaf(5, new Empty, new Empty),
-                      new Leaf(8, new Empty, new Empty))
+                      new Leaf(5, Empty, Empty),
+                      new Leaf(8, Empty, Empty))
 
     println(t1)
   }
@@ -45,4 +45,4 @@ object IntSet {
 
 // [info] Running coursera.IntSet
 // {{.5.}7{.8.}}
-// [success] Total time: 1 s, completed 23 juil. 2013 12:01:16
+// [success] Total time: 4 s, completed 23 juil. 2013 12:13:08
