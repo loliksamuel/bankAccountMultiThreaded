@@ -7,9 +7,7 @@ class Rational(x: Int, y: Int) {
   def add(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
 
-  def makeString(r: Rational): String = r.numer + "/" + r.denom
-
-  override def toString(): String = makeString(this)
+  override def toString(): String = numer + "/" + denom
 }
 
 object Rational {
