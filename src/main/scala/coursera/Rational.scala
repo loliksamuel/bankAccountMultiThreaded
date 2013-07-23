@@ -17,7 +17,7 @@ class Rational(x: Int, y: Int) {
 
   def less(r: Rational): Boolean = numer * r.denom < r.numer * denom
 
-  def max(r: Rational): Rational = if (this.less(r)) r else this
+  def max(r: Rational): Rational = if (less(r)) r else this
 
   override def toString(): String = numer + "/" + denom
 }
