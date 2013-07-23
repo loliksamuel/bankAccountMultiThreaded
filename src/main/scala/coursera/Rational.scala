@@ -16,12 +16,15 @@ class Rational(x: Int, y: Int) {
 
 object Rational {
   def main(args: Array[String]) = {
-    val r0 = new Rational(1, 2)
-    val r1 = new Rational(2, 3)
+    val x = new Rational(1, 3)
+    val y = new Rational(5, 7)
+    val z = new Rational(3, 2)
 
-    println(r0.add(r1))
-    println(r0.neg)
-    println(r0.sub(r0))
+    println(x.add(y))
+    println(y.neg)
+    println(x.sub(x))
+
+    println(x.sub(y).sub(z))
   }
 }
 
