@@ -9,6 +9,8 @@ class Rational(x: Int, y: Int) {
 
   def neg(): Rational = new Rational(-numer, denom)
 
+  def sub(r: Rational): Rational = add(r.neg)
+
   override def toString(): String = numer + "/" + denom
 }
 
@@ -19,7 +21,7 @@ object Rational {
 
     println(r0.add(r1))
     println(r0.neg)
-
+    println(r0.sub(r0))
   }
 }
 
