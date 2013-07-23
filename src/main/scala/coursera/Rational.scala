@@ -15,6 +15,8 @@ class Rational(x: Int, y: Int) {
 
   def sub(r: Rational): Rational = add(r.neg)
 
+  def less(r: Rational): Boolean = numer * r.denom < r.numer * denom
+
   override def toString(): String = numer + "/" + denom
 }
 
@@ -29,6 +31,8 @@ object Rational {
     println(x.sub(x))
     println(x.sub(y).sub(z))
     println(y.add(y))
+    println(x.less(y))
+    println(y.less(x))
   }
 }
 
