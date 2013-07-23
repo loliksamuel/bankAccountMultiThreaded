@@ -4,6 +4,9 @@ import scala.annotation.tailrec
 
 class Rational(x: Int, y: Int) {
   require(y != 0, "denominator must be non zero")
+
+  def this(x: Int) = this(x, 1)
+
   private val g = w2.gcd(x, y)
 
   val numer = x / g
@@ -39,8 +42,8 @@ object Rational {
     println(x.max(y))
     println(y.max(x))
 
-    val strange = new Rational(1, 0)
-    println(strange.add(strange))
+    val a = new Rational(2)
+    println(a)
   }
 }
 
