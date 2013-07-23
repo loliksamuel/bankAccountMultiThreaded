@@ -10,16 +10,16 @@ class Rational(x: Int, y: Int) {
   val numer = x
   val denom = y
 
-  def add(r: Rational): Rational =
+  def +(r: Rational): Rational =
     new Rational(r.numer * denom + numer * r.denom, r.denom * denom)
 
   def neg(): Rational = new Rational(-numer, denom)
 
-  def sub(r: Rational): Rational = add(r.neg)
+  def -(r: Rational): Rational = this + r.neg
 
-  def less(r: Rational): Boolean = numer * r.denom < r.numer * denom
+  def < (r: Rational): Boolean = numer * r.denom < r.numer * denom
 
-  def max(r: Rational): Rational = if (less(r)) r else this
+  def max(r: Rational): Rational = if (this < r) r else this
 
   override def toString(): String = {
     val g = w2.gcd(numer, denom)
@@ -33,13 +33,13 @@ object Rational {
     val y = new Rational(5, 7)
     val z = new Rational(3, 2)
 
-    println(x add y)
+    println(x + y)
     println(y neg)
-    println(x sub x)
-    println(x sub y sub z)
-    println(y add y)
-    println(x less y)
-    println(y less x)
+    println(x + x)
+    println(x - y - z)
+    println(y + y)
+    println(x < y)
+    println(y < x)
     println(x max y)
     println(y max x)
 
@@ -51,7 +51,7 @@ object Rational {
 // [info] Running coursera.Rational
 // 22/21
 // 5/-7
-// 0/1
+// 2/3
 // -79/42
 // 10/7
 // true
@@ -59,4 +59,4 @@ object Rational {
 // 5/7
 // 5/7
 // 2/1
-// [success] Total time: 0 s, completed 23 juil. 2013 11:20:56
+// [success] Total time: 0 s, completed 23 juil. 2013 11:27:54
