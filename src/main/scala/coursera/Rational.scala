@@ -33,15 +33,15 @@ object Rational {
     val y = new Rational(5, 7)
     val z = new Rational(3, 2)
 
-    println(x.add(y))
-    println(y.neg)
-    println(x.sub(x))
-    println(x.sub(y).sub(z))
-    println(y.add(y))
-    println(x.less(y))
-    println(y.less(x))
-    println(x.max(y))
-    println(y.max(x))
+    println(x add y)
+    println(y neg)
+    println(x sub x)
+    println(x sub y sub z)
+    println(y add y)
+    println(x less y)
+    println(y less x)
+    println(x max y)
+    println(y max x)
 
     val a = new Rational(2)
     println(a)
@@ -59,4 +59,4 @@ object Rational {
 // 5/7
 // 5/7
 // 2/1
-// [success] Total time: 1 s, completed 23 juil. 2013 11:02:08
+// [success] Total time: 0 s, completed 23 juil. 2013 11:20:56
