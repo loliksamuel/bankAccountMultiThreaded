@@ -3,6 +3,7 @@ package coursera
 import scala.annotation.tailrec
 
 class Rational(x: Int, y: Int) {
+  require(y != 0, "denominator must be non zero")
   private val g = w2.gcd(x, y)
 
   val numer = x / g
@@ -53,10 +54,10 @@ object Rational {
 // false
 // 5/7
 // 5/7
-// [error] (run-main) java.lang.ArithmeticException: / by zero
-// java.lang.ArithmeticException: / by zero
-// 	at coursera.Rational.<init>(Rational.scala:8)
-// 	at coursera.Rational.add(Rational.scala:12)
+// [error] (run-main) java.lang.IllegalArgumentException: requirement failed: denominator must be non zero
+// java.lang.IllegalArgumentException: requirement failed: denominator must be non zero
+// 	at scala.Predef$.require(Predef.scala:214)
+// 	at coursera.Rational.<init>(Rational.scala:6)
 // 	at coursera.Rational$.main(Rational.scala:42)
 // 	at coursera.Rational.main(Rational.scala)
 // 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -68,4 +69,4 @@ object Rational {
 // 	at scala.sys.package$.error(package.scala:27)
 // [trace] Stack trace suppressed: run last compile:run for the full output.
 // [error] (compile:run) Nonzero exit code: 1
-// [error] Total time: 1 s, completed 23 juil. 2013 10:46:04
+// [error] Total time: 1 s, completed 23 juil. 2013 10:47:01
