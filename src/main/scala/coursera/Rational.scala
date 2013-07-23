@@ -37,6 +37,9 @@ object Rational {
     println(y.less(x))
     println(x.max(y))
     println(y.max(x))
+
+    val strange = new Rational(1, 0)
+    println(strange.add(strange))
   }
 }
 
@@ -50,4 +53,19 @@ object Rational {
 // false
 // 5/7
 // 5/7
-// [success] Total time: 1 s, completed 23 juil. 2013 10:43:08
+// [error] (run-main) java.lang.ArithmeticException: / by zero
+// java.lang.ArithmeticException: / by zero
+// 	at coursera.Rational.<init>(Rational.scala:8)
+// 	at coursera.Rational.add(Rational.scala:12)
+// 	at coursera.Rational$.main(Rational.scala:42)
+// 	at coursera.Rational.main(Rational.scala)
+// 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+// 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+// 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+// 	at java.lang.reflect.Method.invoke(Method.java:606)
+// [trace] Stack trace suppressed: run last compile:run for the full output.
+// java.lang.RuntimeException: Nonzero exit code: 1
+// 	at scala.sys.package$.error(package.scala:27)
+// [trace] Stack trace suppressed: run last compile:run for the full output.
+// [error] (compile:run) Nonzero exit code: 1
+// [error] Total time: 1 s, completed 23 juil. 2013 10:46:04
