@@ -1,13 +1,6 @@
 object sessionHOFList {
   def main(args: Array[String]) = {
 
-    // filter only elements that are strictly positive
-    def posElems(xs: List[Int]): List[Int] = xs match {
-        case Nil     => Nil
-        case y :: ys => if (y > 0) y :: posElems(ys)
-                        else       posElems(ys)
-      }
-
     val elems = List(1.0, 1.5, 2.9, 4.5)
     println(elems map (x => x * 0.5))
 
@@ -15,7 +8,7 @@ object sessionHOFList {
     println(ilems map (x => x * x))
 
     val nlems = List(-1, 1, 10, -2, 45)
-    println(posElems(nlems))
+    println(nlems filter (x => x > 0))
   }
 }
 
