@@ -21,18 +21,18 @@ object w2 {
   def main(args: Array[String]) = {
 
     title("gcd")
-    val values = List(Tuple2(2, 4),
-                      Tuple2(14, 21),
-                      Tuple2(3, 99),
-                      Tuple2(8, 1024),
-                      Tuple2(1, 119))
+    val values = List((2, 4),
+                      (14, 21),
+                      (3, 99),
+                      (8, 1024),
+                      (1, 119))
     (for ((a, b) <- values) println("gcd(" + a + ", " + b + ") = " + gcd(a, b)))
 
     title("factorial")
 
     val fvalues = List(1,2,3,4,5,6,7,8,9)
 
-    fvalues.map(factorial).map(println)
+    fvalues map factorial map println
 
     title("end")
   }
