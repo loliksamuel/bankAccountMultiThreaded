@@ -1,21 +1,10 @@
 object sessionHOFList {
   def main(args: Array[String]) = {
-    def squareList(xs: List[Int]): List[Int] = xs match {
-      case Nil     => xs
-      case y :: ys => y * y :: squareList(ys)
-    }
-
-    def mapSquare(xs: List[Int]): List[Int] = xs map (x => x * x)
-
     val elems = List(1.0, 1.5, 2.9, 4.5)
-    val elemsMap = elems map (x => x * 0.5)
-
-    println(elemsMap)
+    println(elems map (x => x * 0.5))
 
     val ilems = List(1, 3, 5, 7)
-
-    println(squareList(ilems))
-    println(mapSquare(ilems))
+    println(ilems map (x => x * x))
   }
 }
 
