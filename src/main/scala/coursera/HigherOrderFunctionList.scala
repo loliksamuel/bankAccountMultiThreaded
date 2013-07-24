@@ -2,10 +2,9 @@ object sessionHOFList {
   def main(args: Array[String]) = {
     def pack[T](xs: List[T]): List[List[T]] = xs match {
         case Nil     => Nil
-        case y :: ys => {
-          val (yss, rss) = ys span (x => x == y)
-          List(y :: yss) ++ pack(rss)
-        }
+        case y :: ys =>
+          val (yss, rss) = xs span (x => x == y)
+          yss :: pack(rss)
       }
 
     val elems = List(1.0, 1.5, 2.9, 4.5)
@@ -38,4 +37,4 @@ object sessionHOFList {
 // List(1, 10, -2, 45)
 // (List(-1),List(1, 10, -2, 45))
 // List(List(a, a, a), List(b), List(c, c), List(a))
-// [success] Total time: 2 s, completed 24 juil. 2013 11:54:26
+// [success] Total time: 2 s, completed 24 juil. 2013 11:57:46
