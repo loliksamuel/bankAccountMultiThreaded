@@ -7,6 +7,8 @@ object sessionHOFList {
           yss :: pack(rss)
       }
 
+    def encode[T](xs: List[T]): List[(T, Int)] = pack(xs) map (x => (x.head, x.length))
+
     val elems = List(1.0, 1.5, 2.9, 4.5)
     println(elems map (x => x * 0.5))
 
@@ -24,6 +26,7 @@ object sessionHOFList {
 
     val listToPack = List("a", "a", "a", "b", "c", "c", "a")
     println(pack(listToPack))
+    println(encode(listToPack))
   }
 }
 
@@ -37,4 +40,5 @@ object sessionHOFList {
 // List(1, 10, -2, 45)
 // (List(-1),List(1, 10, -2, 45))
 // List(List(a, a, a), List(b), List(c, c), List(a))
-// [success] Total time: 2 s, completed 24 juil. 2013 11:57:46
+// List((a,3), (b,1), (c,2), (a,1))
+// [success] Total time: 1 s, completed 24 juil. 2013 12:17:14
