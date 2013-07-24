@@ -1,12 +1,15 @@
 object sessionReduceList {
   def main(args: Array[String]) = {
-    def sumList(xs: List[Int]): Int = (0 :: xs) reduceLeft (_ + _)
+    def sum(xs: List[Int]): Int = (0 :: xs) reduceLeft (_ + _)
+    def pdt(xs: List[Int]): Int = (1 :: xs) reduceLeft (_ * _)
 
     val elems = List(1, 3, 5, 7)
-    println(sumList(elems))
+    println(sum(elems))
+    println(pdt(elems))
   }
 }
 
-// [info] Running sessionReduceList 1
+// [info] Running sessionReduceList
 // 16
-// [success] Total time: 1 s, completed 24 juil. 2013 12:28:35
+// 105
+// [success] Total time: 0 s, completed 24 juil. 2013 12:29:44
