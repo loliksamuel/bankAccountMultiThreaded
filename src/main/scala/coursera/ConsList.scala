@@ -1,42 +1,40 @@
 package coursera
 
-trait List[T] {
+trait List1[T] {
   def isEmpty: Boolean
   def head: T
-  def tail: List[T]
-  def ::(x: T):List[T]
+  def tail: List1[T]
   def toString: String
 }
 
-class Nil[T] extends List[T] {
+case class Nil1[T] extends List1[T] {
   def isEmpty: Boolean = true
   def head: Nothing = throw new NoSuchElementException("Nil.head")
   def tail: Nothing = throw new NoSuchElementException("Nil.tail")
-  def ::(x: T):List[T] = new Cons(x, this)
   override def toString: String = "."
 }
 
-class Cons[T](val head: T, val tail: List[T]) extends List[T] {
+case class Cons1[T](val head: T, val tail: List1[T]) extends List1[T] {
   def isEmpty: Boolean = false
-  def ::(x: T):List[T] = new Cons(x, this)
 
   override def toString: String = "(" + head + ", " + tail.toString + ")"
 }
 
 object ConsListSession {
-  def main(args: Array[String]) = {
-    def singleton[T](elem: T) = new Cons[T](elem, new Nil[T])
 
-    def nth[T](n: Int, l: List[T]): T =
+  def main(args: Array[String]) = {
+    def singleton[T](elem: T) = new Cons1[T](elem, new Nil1)
+
+    def nth[T](n: Int, l: List1[T]): T =
       if (n < 0 || l.isEmpty) throw new IndexOutOfBoundsException("Out of range")
       else if (n == 0) l.head
       else nth(n-1, l.tail)
 
-    // def last[T](xs: List[T]): T = xs match {
-    //     case List()  => throw new Error("last of empty list")
-    //     case List(x) => x
-    //     case y :: ys => last(ys)
-    //   }
+    def last[T](xs: List1[T]): T = xs match {
+        case Nil1()           => throw new Error("last of empty list")
+        case Cons1(x, Nil1()) => x
+        case Cons1(y,ys)      => last(ys)
+      }
 
     //  def init[T](xs: List[T]): T = xs match {
     //     case List()  => throw new Error("init of empty list")
@@ -54,7 +52,7 @@ object ConsListSession {
     //     case y :: ys => reverse(ys) ++ List(y)
     //   }
 
-    def catchAndPrint[T](index: Int, l: List[T]) =
+    def catchAndPrint[T](index: Int, l: List1[T]) =
       try {
         nth(index, l)
       } catch {
@@ -64,7 +62,7 @@ object ConsListSession {
     println(singleton[Int](1))
     println(singleton[Boolean](true))
 
-    val listTypes = new Cons[Int](1, new Cons[Int](2, new Nil[Int]))
+    val listTypes = new Cons1[Int](1, new Cons1[Int](2, new Nil1))
     println(listTypes)
 
     println(nth(0, listTypes))
@@ -73,6 +71,7 @@ object ConsListSession {
     catchAndPrint[Int](-1, listTypes)
     catchAndPrint[Int](3, listTypes)
 
+    println(last(listTypes))
     println("end")
   }
 }
@@ -85,5 +84,6 @@ object ConsListSession {
 // 2
 // exception caught as expected: java.lang.IndexOutOfBoundsException: Out of range
 // exception caught as expected: java.lang.IndexOutOfBoundsException: Out of range
+// 2
 // end
-// [success] Total time: 2 s, completed 23 juil. 2013 15:15:15
+// [success] Total time: 4 s, completed 24 juil. 2013 15:30:35
