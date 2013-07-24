@@ -11,8 +11,10 @@ object sessionHOFList {
     println(nlems filter    (x => x > 0))
     println(nlems filterNot (x => x > 0))
     println(nlems partition (x => x > 0))
+
     println(nlems takeWhile (x => x < 0))
     println(nlems dropWhile (x => x < 0))
+    println(nlems span      (x => x < 0))
   }
 }
 
@@ -24,4 +26,5 @@ object sessionHOFList {
 // (List(1, 10, 45),List(-1, -2))
 // List(-1)
 // List(1, 10, -2, 45)
-// [success] Total time: 1 s, completed 24 juil. 2013 11:40:13
+// (List(-1),List(1, 10, -2, 45))
+// [success] Total time: 0 s, completed 24 juil. 2013 11:41:24
