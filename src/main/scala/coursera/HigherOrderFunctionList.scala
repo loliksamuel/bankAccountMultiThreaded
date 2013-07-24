@@ -8,7 +8,9 @@ object sessionHOFList {
     println(ilems map (x => x * x))
 
     val nlems = List(-1, 1, 10, -2, 45)
-    println(nlems filter (x => x > 0))
+    println(nlems filter    (x => x > 0))
+    println(nlems filterNot (x => x > 0))
+
   }
 }
 
@@ -16,4 +18,5 @@ object sessionHOFList {
 // List(0.5, 0.75, 1.45, 2.25)
 // List(1, 9, 25, 49)
 // List(1, 10, 45)
-// [success] Total time: 2 s, completed 24 juil. 2013 11:32:34
+// List(-1, -2)
+// [success] Total time: 1 s, completed 24 juil. 2013 11:36:55
