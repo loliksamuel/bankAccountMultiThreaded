@@ -1,5 +1,12 @@
 object sessionHOFList {
   def main(args: Array[String]) = {
+    def pack[T](xs: List[T]): List[List[T]] = xs match {
+        case Nil     => Nil
+        case y :: ys => {
+          val (yss, rss) = ys span (x => x == y)
+          List(y :: yss) ++ pack(rss)
+        }
+      }
 
     val elems = List(1.0, 1.5, 2.9, 4.5)
     println(elems map (x => x * 0.5))
@@ -15,6 +22,9 @@ object sessionHOFList {
     println(nlems takeWhile (x => x < 0))
     println(nlems dropWhile (x => x < 0))
     println(nlems span      (x => x < 0))
+
+    val listToPack = List("a", "a", "a", "b", "c", "c", "a")
+    println(pack(listToPack))
   }
 }
 
@@ -27,4 +37,5 @@ object sessionHOFList {
 // List(-1)
 // List(1, 10, -2, 45)
 // (List(-1),List(1, 10, -2, 45))
-// [success] Total time: 0 s, completed 24 juil. 2013 11:41:24
+// List(List(a, a, a), List(b), List(c, c), List(a))
+// [success] Total time: 2 s, completed 24 juil. 2013 11:54:26
