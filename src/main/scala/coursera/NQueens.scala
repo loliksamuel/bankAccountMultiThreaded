@@ -25,10 +25,25 @@ object sessionNQueens {
       placeQueens(n)
     }
 
-    println(queens(4))
+    def show(queens: List[Int]) = {
+      val lines = for (col <- queens.reverse)
+                  yield Vector.fill(queens.length)("* ").updated(col, "X "). mkString
+      "\n" + (lines mkString "\n")
+    }
+
+    println(queens(4) map show mkString "\n")
   }
 }
 
 // [info] Running coursera.sessionNQueens
-// Set(List(1, 3, 0, 2), List(2, 0, 3, 1))
-// [success] Total time: 21 s, completed 25 juil. 2013 15:36:00
+
+// * * X *
+// X * * *
+// * * * X
+// * X * *
+
+// * X * *
+// * * * X
+// X * * *
+// * * X *
+// [success] Total time: 1 s, completed 25 juil. 2013 15:42:20
