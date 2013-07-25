@@ -15,8 +15,8 @@ object sessionExpressions {
   }
 
   def main(args: Array[String]) = {
-    println(eval(new Sum(new Number(10), new Number(-5))))
-    println(eval(new Pdt(new Sum(new Number(10), new Number(-5)), new Number(2))))
+    println(eval(Sum(Number(10), Number(-5))))
+    println(eval(Pdt(Sum(Number(10), Number(-5)), Number(2))))
   }
 
 }
@@ -24,4 +24,4 @@ object sessionExpressions {
 // [info] Running coursera.sessionExpressions
 // 5
 // 10
-// [success] Total time: 2 s, completed 25 juil. 2013 12:09:00
+// [success] Total time: 2 s, completed 25 juil. 2013 12:13:08
