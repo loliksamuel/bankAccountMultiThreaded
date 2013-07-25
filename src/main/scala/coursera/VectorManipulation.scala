@@ -8,7 +8,7 @@ object sessionVectorManipulation {
     }
 
     def scalarPdt(xs: Vector[Int], ys: Vector[Int]): Int =
-      (xs zip ys) map { case (x, y) => x * y } sum
+      (for ((x, y) <- (xs zip ys)) yield (x * y)) sum
 
     def isPrime(n: Int): Boolean =
       (2 until n) forall (x => n % x != 0)
@@ -44,4 +44,4 @@ object sessionVectorManipulation {
 // 20
 // Vector(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97)
 // Vector((2,1), (3,2), (4,1), (4,3), (5,2), (6,1), (6,5), (7,4), (7,6), (8,3), (8,5), (9,2), (9,4), (9,8))
-// [success] Total time: 2 s, completed 25 juil. 2013 15:16:56
+// [success] Total time: 1 s, completed 25 juil. 2013 15:20:44
