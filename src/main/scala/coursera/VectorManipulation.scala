@@ -8,7 +8,7 @@ object sessionVectorManipulation {
     }
 
     def scalarPdt(xs: Vector[Int], ys: Vector[Int]): Int =
-      (xs zip ys) map (xy => xy._1 * xy._2) sum
+      (xs zip ys) map { case (x, y) => x * y } sum
 
     val nums = Vector(1, 2, 3, -88)
     val names = Vector("one", "two", "three", "minus eighty eight")
@@ -31,4 +31,4 @@ object sessionVectorManipulation {
 // Vector((one,1), (two,2), (three,3), (minus eighty eight,-88))
 // Vector((1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7), (1,8), (1,9), (1,10), (2,1), (2,2), (2,3), (2,4), (2,5), (2,6), (2,7), (2,8), (2,9), (2,10))
 // 20
-// [success] Total time: 1 s, completed 25 juil. 2013 14:47:56
+// [success] Total time: 1 s, completed 25 juil. 2013 14:49:56
