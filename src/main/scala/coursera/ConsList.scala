@@ -1,13 +1,13 @@
 package coursera
 
-trait List1[T] {
+trait List1[+T] {
   def isEmpty: Boolean
   def head: T
   def tail: List1[T]
   def toString: String
 }
 
-case class Nil1[T] extends List1[T] {
+case object Nil1 extends List1[Nothing] {
   def isEmpty: Boolean = true
   def head: Nothing = throw new NoSuchElementException("Nil.head")
   def tail: Nothing = throw new NoSuchElementException("Nil.tail")
@@ -23,7 +23,7 @@ case class Cons1[T](val head: T, val tail: List1[T]) extends List1[T] {
 object ConsListSession {
 
   def main(args: Array[String]) = {
-    def singleton[T](elem: T) = new Cons1[T](elem, new Nil1)
+    def singleton[T](elem: T) = new Cons1[T](elem, Nil1)
 
     def nth[T](n: Int, l: List1[T]): T =
       if (n < 0 || l.isEmpty) throw new IndexOutOfBoundsException("Out of range")
@@ -31,8 +31,8 @@ object ConsListSession {
       else nth(n-1, l.tail)
 
     def last[T](xs: List1[T]): T = xs match {
-        case Nil1()           => throw new Error("last of empty list")
-        case Cons1(x, Nil1()) => x
+        case Nil1           => throw new Error("last of empty list")
+        case Cons1(x, Nil1) => x
         case Cons1(y,ys)      => last(ys)
       }
 
@@ -62,7 +62,7 @@ object ConsListSession {
     println(singleton[Int](1))
     println(singleton[Boolean](true))
 
-    val listTypes = new Cons1[Int](1, new Cons1[Int](2, new Nil1))
+    val listTypes = new Cons1[Int](1, new Cons1[Int](2, Nil1))
     println(listTypes)
 
     println(nth(0, listTypes))
@@ -86,4 +86,4 @@ object ConsListSession {
 // exception caught as expected: java.lang.IndexOutOfBoundsException: Out of range
 // 2
 // end
-// [success] Total time: 4 s, completed 24 juil. 2013 15:30:35
+// [success] Total time: 5 s, completed 25 juil. 2013 09:46:49
