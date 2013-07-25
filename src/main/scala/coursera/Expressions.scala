@@ -23,3 +23,20 @@ class Sum(e1: Expr, e2: Expr) extends Expr {
   def leftOp: Expr = e1
   def rightOp: Expr = e2
 }
+
+object sessionExpressions {
+  def main(args: Array[String]) = {
+    def eval(e: Expr): Int = {
+      if(e.isNumber) e.numValue
+      else if(e.isSum) eval(e.leftOp) + eval(e.rightOp)
+      else throw new Error("Unknown Expression " + e)
+    }
+
+    println(eval(new Sum(new Number(10), new Number(-5))))
+  }
+
+}
+
+// [info] Running coursera.sessionExpressions
+// 5
+// [success] Total time: 6 s, completed 25 juil. 2013 11:45:39
