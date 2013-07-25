@@ -4,6 +4,7 @@ trait List1[+T] {
   def isEmpty: Boolean
   def head: T
   def tail: List1[T]
+  def prepend(elem: T): List1[T] = new Cons1(elem, this)
   def toString: String
 }
 
