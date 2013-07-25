@@ -5,7 +5,7 @@ object sessionListManipulation {
     val fruits = List("apples", "oranges", "pears")
       println(fruits)
 
-    val fruits2 = "apples" :: ("oranges" :: ("pears" :: Nil))
+    val fruits2 = "apples" :: "oranges" :: "pears" :: Nil
       println(fruits2)
   }
 }
