@@ -37,6 +37,8 @@ object ConsListSession {
         case Cons1(y,ys)      => last(ys)
       }
 
+//    def f(xs: List1[Leaf], x: Empty) = xs :: x
+
     //  def init[T](xs: List[T]): T = xs match {
     //     case List()  => throw new Error("init of empty list")
     //     case List(x) => List()
