@@ -4,6 +4,7 @@ trait List1[+T] {
   def isEmpty: Boolean
   def head: T
   def tail: List1[T]
+  def ::[U >: T](elem: U): List1[U] = new Cons1(elem, this)
   def toString: String
 }
 
