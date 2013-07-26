@@ -4,7 +4,7 @@ object sessionStream {
   def main(args: Array[String]) = {
     def streamRange(lo: Int, hi: Int): Stream[Int] =
         if (lo >= hi) Stream.empty
-        else Stream.cons(lo, streamRange(lo + 1, hi))
+        else lo #:: streamRange(lo + 1, hi)
 
     def listRange(lo: Int, hi: Int): List[Int] =
         if (lo >= hi) Nil
@@ -38,4 +38,4 @@ object sessionStream {
 // list: List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 // second prime number between [1000,10000] - list: 1013
 // second prime number between [1000,10000] - list: 1013
-// [success] Total time: 1 s, completed 26 juil. 2013 09:58:20
+// [success] Total time: 1 s, completed 26 juil. 2013 10:02:01
