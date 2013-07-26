@@ -34,8 +34,8 @@ class Leaf(elem: Int, l: IntSet, r: IntSet) extends IntSet {
     else if (elem < x) new Leaf(elem, l,        r incl x)
     else this
 
-  def union(other: IntSet): IntSet =
-    ((l union r) union other) incl elem
+   def union(other: IntSet): IntSet =
+    (l union (r union (other))) incl elem
 
   override def toString = "{" + l + elem + r + "}"
 }
@@ -61,4 +61,4 @@ object IntSet {
 // {{.5.}7{.8.}}
 // {{.5.}7{.8.}}
 // {{.5{{.7.}8.}}12.}
-// [success] Total time: 3 s, completed 23 juil. 2013 12:31:03
+// [success] Total time: 5 s, completed 26 juil. 2013 09:22:46
