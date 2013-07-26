@@ -2,7 +2,7 @@ package coursera
 
 import math.abs
 
-object w32 {
+object FixedPointCompute {
   val tolerance = 0.0001
 
   def isCloseEnough(x: Double, y: Double): Boolean =

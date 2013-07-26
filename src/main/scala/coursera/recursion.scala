@@ -2,7 +2,7 @@ package coursera
 
 import scala.annotation.tailrec
 
-object w2 {
+object sessionTailRecursiveOrNot {
 
   @tailrec
   def gcd(a: Int, b: Int): Int =

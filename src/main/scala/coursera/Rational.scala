@@ -19,7 +19,7 @@ class Rational(val numer: Int, val denom: Int) {
   def max(r: Rational): Rational = if (this < r) r else this
 
   override def toString(): String = {
-    val g = w2.gcd(numer, denom)
+    val g = sessionTailRecursiveOrNot.gcd(numer, denom)
     numer / g + "/" + denom / g
   }
 }

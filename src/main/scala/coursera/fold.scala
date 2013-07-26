@@ -2,7 +2,7 @@ package coursera
 
 import scala.annotation.tailrec
 
-object w3 {
+object sessionFold {
   def fold(fn: Int => Int, op: (Int, Int) => Int, initial: Int)(a: Int, b: Int): Int = {
     @tailrec
     def loop(a: Int, r: Int): Int =
@@ -17,7 +17,8 @@ object w3 {
   def factorial(n: Int) = pdt(identity)(1, n)
 
   def main(args: Array[String]) = {
-    w2.title("sum of a function values (cube, factorial, etc...)")
+    def title(s: String) = println("\n######### " + s + "\n")
+    title("sum of a function values (cube, factorial, etc...)")
 
     val values = List(Tuple2(1, 10),
                       Tuple2(10, 20))
@@ -35,13 +36,13 @@ object w3 {
          println(displayResult(fnName, a, b, fn(a, b))))
     }
 
-    w2.title("factorial")
+    title("factorial")
 
     val fvalues = List(1,2,3,4,5,6,7,8,9)
 
     fvalues.map(factorial).map(println)
 
-    w2.title("end")
+    title("end")
   }
 }
 

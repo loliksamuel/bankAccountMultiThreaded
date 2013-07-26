@@ -2,9 +2,9 @@ package coursera
 
 import math.abs
 
-object w1 {
+object sessionSqrt {
 
-  def sqrt(x: Double) = w32.fixedPoint(y => x/y)(1.0)
+  def sqrt(x: Double) = FixedPointCompute.fixedPoint(y => x/y)(1.0)
 
   def main(args: Array[String]) = {
     val values = List(2.0, 4.0, 1e-6, 0.001, 0.1e-20, 1.0e20, 1.0e50)
