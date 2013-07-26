@@ -21,6 +21,12 @@ object sessionStream {
 
     println("stream: " + streamRange(0, 10))
     println("list: " + listRange(0, 10))
+
+    val secondprimeWithList = ((1000 to 10000) filter Prime.isPrime)(1)
+    val secondprimeWithStream = ((1000 to 10000).toStream filter Prime.isPrime)(1)
+
+    println("second prime number between [1000,10000] - list: " + secondprimeWithList)
+    println("second prime number between [1000,10000] - list: " + secondprimeWithStream)
   }
 }
 
@@ -30,4 +36,6 @@ object sessionStream {
 // Tail not consumed    : Stream(2, ?)
 // stream: Stream(0, ?)
 // list: List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
-// [success] Total time: 1 s, completed 26 juil. 2013 09:47:32
+// second prime number between [1000,10000] - list: 1013
+// second prime number between [1000,10000] - list: 1013
+// [success] Total time: 1 s, completed 26 juil. 2013 09:58:20

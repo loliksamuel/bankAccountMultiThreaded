@@ -10,13 +10,10 @@ object sessionVectorManipulation {
     def scalarPdt(xs: Vector[Int], ys: Vector[Int]): Int =
       (for ((x, y) <- (xs zip ys)) yield (x * y)) sum
 
-    def isPrime(n: Int): Boolean =
-      (2 until n) forall (x => n % x != 0)
-
     def pairsPrime(n: Int) = {
       for { i <- 1 until n
             j <- 1 until i
-            if isPrime(i + j)
+            if Prime.isPrime(i + j)
       } yield (i, j)
     }
 
@@ -30,7 +27,7 @@ object sessionVectorManipulation {
     println(names zip nums)
     println(combi(2, 10))
     println(scalarPdt(nums, nums2))
-    println((2 to 100) filter isPrime)
+    println((2 to 100) filter Prime.isPrime)
     println(pairsPrime(10))
   }
 
