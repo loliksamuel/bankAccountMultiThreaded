@@ -2,7 +2,6 @@ package coursera
 
 object sessionStream {
   def main(args: Array[String]) = {
-    def from(n: Int): Stream[Int] = n #:: from(n+1)
 
     def streamRange(lo: Int, hi: Int): Stream[Int] =
         if (lo >= hi) Stream.empty
