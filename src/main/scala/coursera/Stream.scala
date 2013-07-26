@@ -2,11 +2,9 @@ package coursera
 
 object sessionStream {
   def main(args: Array[String]) = {
-    def streamRange(lo: Int, hi: Int): Stream[Int] = {
-        print(lo + " ")
+    def streamRange(lo: Int, hi: Int): Stream[Int] =
         if (lo >= hi) Stream.empty
         else lo #:: streamRange(lo + 1, hi)
-    }
 
     def listRange(lo: Int, hi: Int): List[Int] =
         if (lo >= hi) Nil
@@ -29,10 +27,6 @@ object sessionStream {
 
     println("second prime number between [1000,10000] - list: " + secondprimeWithList)
     println("second prime number between [1000,10000] - list: " + secondprimeWithStream)
-
-    streamRange(1, 10) take(3) toList
-
-    println("\nend")
   }
 }
 
@@ -44,6 +38,4 @@ object sessionStream {
 // list: List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
 // second prime number between [1000,10000] - list: 1013
 // second prime number between [1000,10000] - list: 1013
-// 1 2 3
-// end
 // [success] Total time: 1 s, completed 26 juil. 2013 10:12:23
