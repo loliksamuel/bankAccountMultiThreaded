@@ -1,12 +1,14 @@
 package p99
 
 object ex99 {
+  // built-in: l.last
   def last[T](l: List[T]): T = l match {
       case Nil      => throw new NoSuchElementException("Nil.last")
       case x :: Nil => x
       case _ :: xs  => last(xs)
     }
 
+  // built-in: l.init.last
   def penultimate[T](l: List[T]): T = l match {
       case Nil           => throw new NoSuchElementException("Nil.last")
       case x :: Nil      => throw new NoSuchElementException("Nil.last")
