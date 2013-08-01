@@ -1,6 +1,6 @@
 package p99
 
-object p01 {
+object ex99 {
   def last[T](l: List[T]): T = l match {
       case Nil      => throw new NoSuchElementException("Nil.last")
       case x :: Nil => x
