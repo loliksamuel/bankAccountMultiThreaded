@@ -1,3 +1,11 @@
+addCommandAlias("c", "compile")
+
+addCommandAlias("t", "test")
+
+addCommandAlias("tc", "test:compile")
+
+addCommandAlias("r", "run")
+
 name := "scala-lab"
 
 version := "1.0"
