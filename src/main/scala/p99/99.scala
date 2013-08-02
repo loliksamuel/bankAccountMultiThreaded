@@ -34,10 +34,7 @@ object ex99 {
 
   // built-in: l.length
   // length of a list
-  def length[T](l: List[T]): Int = l match {
-      case Nil => 0
-      case _ :: xs => 1 + length(xs)
-  }
+  def length[T](l: List[T]): Int = (l foldRight 1) { (_, acc) => 1 + acc }
 
   def main(args: Array[String]) = {
     println(last(List(1, 2, 3, 4)))
