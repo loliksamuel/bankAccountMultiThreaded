@@ -48,10 +48,7 @@ object ex99 {
       }
   }
 
-  def flatten[T](l: List[List[T]]): List[T] = l match {
-      case Nil     => Nil
-      case x :: ys => x ++ flatten(ys)
-  }
+  def flatten[T](l: List[List[T]]): List[T] = (l foldLeft List[T]()) ((lst, x) => x ++ lst)
 
   def main(args: Array[String]) = {
     // if scratch needed...
