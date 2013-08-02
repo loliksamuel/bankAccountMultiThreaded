@@ -37,4 +37,8 @@ object ex99Spec extends Properties("ex99") {
       ex99.reverse(ex99.reverse(l)) == l
     }
 
+  property("palindrome") = forAll { l: List[AnyVal] =>
+      ex99.isPalindrome(l) == (l.reverse == l)
+    }
+
 }
