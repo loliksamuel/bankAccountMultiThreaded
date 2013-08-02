@@ -28,4 +28,8 @@ object ex99Spec extends Properties("ex99") {
         case _: Throwable                 => false // absolutely not expected
       }
     }
+
+  property("length") = forAll { (l: List[AnyVal], x: AnyVal) =>
+    ex99.length(x :: l) == 1 + ex99.length(l)
+    }
 }

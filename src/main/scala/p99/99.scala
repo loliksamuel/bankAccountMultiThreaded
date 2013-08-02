@@ -32,6 +32,13 @@ object ex99 {
     else throw new IndexOutOfBoundsException("not in bounds")
   }
 
+  // built-in: l.length
+  // length of a list
+  def length[T](l: List[T]): Int = l match {
+      case Nil => 0
+      case _ :: xs => 1 + length(xs)
+  }
+
   def main(args: Array[String]) = {
     println(last(List(1, 2, 3, 4)))
     println(last(List("1", "2", "3", "4")))
