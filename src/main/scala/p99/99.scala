@@ -37,20 +37,6 @@ object ex99 {
   def length[T](l: List[T]): Int = (l foldLeft 0) { (acc, _) => 1 + acc }
 
   def main(args: Array[String]) = {
-    println(last(List(1, 2, 3, 4)))
-    println(last(List("1", "2", "3", "4")))
-    println(nth(2, List("1", "2", "3", "4")))
-
-    try { nth(-1, List("1", "2", "3", "4")) }
-    catch {
-      case e: IndexOutOfBoundsException => println("negative index - expected out of bounds exception")
-    }
-
-    try { nth(100, List("1", "2", "3", "4")) }
-    catch {
-      case e: IndexOutOfBoundsException => println("index > upper bound - expected out of bounds exception")
-    }
-
-    println("end")
+    // if scratch needed...
   }
 }
