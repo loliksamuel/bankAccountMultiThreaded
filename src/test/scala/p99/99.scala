@@ -18,4 +18,14 @@ object ex99Spec extends Properties("ex99") {
         case _ :: _   => ex99.penultimate(l) == ex99.penultimate(x :: l)
       }
     }
+
+  property("nth") = forAll { (l: List[AnyVal], n: Int) =>
+      try {
+        ex99.nth(n, l) == l(n)
+      } catch {
+        case e: IndexOutOfBoundsException => true // expected
+        case e: NoSuchElementException    => true // expected
+        case _: Throwable                 => false // absolutely not expected
+      }
+    }
 }
