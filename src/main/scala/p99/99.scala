@@ -39,7 +39,14 @@ object ex99 {
   def reverse[T](l: List[T]): List[T] =
     (l foldLeft List[T]()) ((lst, y) => y :: lst)
 
-  def isPalindrome[T](l: List[T]): Boolean = reverse(l) == l
+  def isPalindrome[T](l: List[T]): Boolean = l match {
+      case Nil      => true
+      case x :: Nil => true
+      case _        => {
+        val (fst, end) = l splitAt l.length/2
+        reverse(fst) == end
+      }
+  }
 
   def main(args: Array[String]) = {
     // if scratch needed...
