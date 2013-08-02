@@ -48,6 +48,11 @@ object ex99 {
       }
   }
 
+  def flatten[T](l: List[List[T]]): List[T] = l match {
+      case Nil     => Nil
+      case x :: ys => x ++ flatten(ys)
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

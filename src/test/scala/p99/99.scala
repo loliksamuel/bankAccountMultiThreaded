@@ -41,4 +41,8 @@ object ex99Spec extends Properties("ex99") {
       ex99.isPalindrome(l) == (l.reverse == l)
     }
 
+  property("flatten") = forAll { (l: List[List[AnyVal]], x: List[AnyVal]) =>
+      val fl = ex99.flatten(x :: l)
+      x forall (fl contains _)
+    }
 }
