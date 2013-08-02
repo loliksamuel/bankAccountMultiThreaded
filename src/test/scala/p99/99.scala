@@ -1,5 +1,6 @@
 package p99
 
+import org.scalacheck._
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
 
@@ -19,11 +20,10 @@ object ex99Spec extends Properties("ex99") {
       }
     }
 
-  property("nth") = forAll { (l: List[AnyVal], n: Int) =>
+  property("nth") = forAll { (l: List[AnyVal], n: Int, x: AnyVal) =>
       try {
-        ex99.nth(n, l) == l(n)
+        ex99.nth(n, l) == ex99.nth(n+1, x :: l)
       } catch {
-        case e: IndexOutOfBoundsException => true // expected
         case e: NoSuchElementException    => true // expected
         case _: Throwable                 => false // absolutely not expected
       }

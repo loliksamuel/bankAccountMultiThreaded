@@ -29,7 +29,7 @@ object ex99 {
       }
 
     if (n >= 0) internalNth(n, l)
-    else throw new IndexOutOfBoundsException("not in bounds")
+    else throw new NoSuchElementException("not in bounds")
   }
 
   // built-in: l.length
