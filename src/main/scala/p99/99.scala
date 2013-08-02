@@ -22,13 +22,14 @@ object ex99 {
   // IndexOutOfBoundException
   // NoSuchElementException
   def nth[T](n: Int, l: List[T]): T = {
-    def internalNth(n: Int, l: List[T]): T = n match {
-        case 0 => l.head
-        case _ => internalNth(n-1, l.tail)
+    def internalNth(n: Int, l: List[T]): T = (n ,l) match {
+        case (_, Nil)     => throw new NoSuchElementException("List consumed, no element was found.")
+        case (0, x :: _)  => x
+        case (n, _ :: xs) => internalNth(n-1, xs)
       }
 
-    if (n < 0 || n > l.length) throw new IndexOutOfBoundsException("not in bounds")
-    else internalNth(n, l)
+    if (n >= 0) internalNth(n, l)
+    else throw new IndexOutOfBoundsException("not in bounds")
   }
 
   def main(args: Array[String]) = {
