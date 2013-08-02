@@ -36,7 +36,14 @@ object ex99 {
   // length of a list
   def length[T](l: List[T]): Int = (l foldLeft 0) { (acc, _) => 1 + acc }
 
+  def reverse[T](l: List[T]): List[T] = l match {
+      case Nil     => Nil
+      case x :: xs => reverse(xs) ++ List(x)
+    }
+
   def main(args: Array[String]) = {
     // if scratch needed...
+    println(reverse(List()))
+    println(reverse(List(1)))
   }
 }

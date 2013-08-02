@@ -32,4 +32,9 @@ object ex99Spec extends Properties("ex99") {
   property("length") = forAll { (l: List[AnyVal], x: AnyVal) =>
     ex99.length(x :: l) == 1 + ex99.length(l)
     }
+
+  property("length") = forAll { l: List[AnyVal] =>
+      ex99.reverse(ex99.reverse(l)) == l
+    }
+
 }
