@@ -45,4 +45,8 @@ object ex99Spec extends Properties("ex99") {
       val fl = ex99.flatten(x :: l)
       x forall (fl contains _)
     }
+
+  property("compress") = forAll { l: List[AnyVal] =>
+      l groupBy (x => x) forall { case (_,b) => b.length == 1 }
+    }
 }
