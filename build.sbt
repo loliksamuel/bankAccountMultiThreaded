@@ -20,3 +20,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
 )
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.0.M8" % "test"
+
+libraryDependencies += "junit" % "junit" % "4.11" % "test"
