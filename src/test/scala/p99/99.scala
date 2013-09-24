@@ -46,7 +46,7 @@ object ex99Spec extends Properties("ex99") {
       x forall (fl contains _)
     }
 
-  property("compress") = forAll { l: List[AnyVal] =>
-      l groupBy (x => x) forall { case (_,b) => b.length == 1 }
-    }
+  // property("compress") = forAll { l: List[AnyVal] =>
+  //     l groupBy (x => x) forall { case (_,b) => b.length == 1 }
+  //   }
 }
