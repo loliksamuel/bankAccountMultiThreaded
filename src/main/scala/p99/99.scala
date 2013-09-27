@@ -2,7 +2,6 @@ package p99
 
 import scala.annotation.tailrec
 
-
 object ex99 {
   // built-in: l.last
   def last[T](l: List[T]): T = l match {
@@ -50,9 +49,18 @@ object ex99 {
 
   def flatten[T](l: List[List[T]]): List[T] = (l foldLeft List[T]()) ((lst, x) => x ++ lst)
 
+  def compress[T](l:List[T]): List[T] =
+    (l foldLeft List[T]()) {(lst, e) => if (lst.contains(e)) lst else e::lst} . reverse
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
     println(reverse(List(1)))
+
+    val res = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+    println(res)
+
+    val sres = compress(List("-1", "-1"))
+    println(sres)
   }
 }

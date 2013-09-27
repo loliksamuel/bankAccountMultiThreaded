@@ -4,7 +4,7 @@ import org.scalacheck._
 import org.scalacheck.Properties
 import org.scalacheck.Prop.forAll
 
-object ex99Spec extends Properties("ex99") {
+object ex99ScalaCheck extends Properties("ex99") {
   property("last") = forAll { (l: List[AnyVal], x: AnyVal) =>
       l match {
         case Nil    => ex99.last(x :: l) == x
@@ -46,7 +46,7 @@ object ex99Spec extends Properties("ex99") {
       x forall (fl contains _)
     }
 
-  // property("compress") = forAll { l: List[AnyVal] =>
-  //     l groupBy (x => x) forall { case (_,b) => b.length == 1 }
-  //   }
+  property("compress") = forAll { l: List[AnyVal] =>
+      ex99.compress(l).size == l.toSet.size
+    }
 }
