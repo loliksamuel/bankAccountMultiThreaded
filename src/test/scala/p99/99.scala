@@ -45,8 +45,4 @@ object ex99ScalaCheck extends Properties("ex99") {
       val fl = ex99.flatten(x :: l)
       x forall (fl contains _)
     }
-
-  property("compress") = forAll { l: List[AnyVal] =>
-      ex99.compress(l).size == l.toSet.size
-    }
 }

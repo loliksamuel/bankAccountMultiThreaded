@@ -50,7 +50,7 @@ object ex99 {
   def flatten[T](l: List[List[T]]): List[T] = (l foldLeft List[T]()) ((lst, x) => x ++ lst)
 
   def compress[T](l:List[T]): List[T] =
-    (l foldLeft List[T]()) {(lst, e) => if (lst.contains(e)) lst else e::lst} . reverse
+    (l.reverse foldLeft List[T]()) {(lst, e) => if (lst.isEmpty || lst.head != e) e::lst else lst}
 
   def main(args: Array[String]) = {
     // if scratch needed...
