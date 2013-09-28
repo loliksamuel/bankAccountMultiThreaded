@@ -31,6 +31,12 @@ class ex99FunTests extends FunSuite {
 
   test("duplicate element in double") {
     assert(ex99.duplicate(List(1, 2, 3, 4)) == List(1, 1, 2, 2, 3, 3, 4, 4))
+    assert(ex99.duplicate(List(3, 2)) == List(3, 3, 2, 2))
+  }
+
+  test("duplicate element in a given amount of time double") {
+    assert(ex99.duplicateN(3, List(1, 2, 3, 4)) == List(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4))
+    assert(ex99.duplicateN(5, List(3, 2)) == List(3, 3, 3, 3, 3, 2, 2, 2, 2, 2))
   }
 
 }
