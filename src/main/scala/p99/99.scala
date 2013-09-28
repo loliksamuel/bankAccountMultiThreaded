@@ -52,6 +52,13 @@ object ex99 {
   def compress[T](l:List[T]): List[T] =
     (l.reverse foldLeft List[T]()) {(lst, e) => if (lst.isEmpty || lst.head != e) e::lst else lst}
 
+  def pack[T](l:List[T]): List[List[T]] =
+    (l.reverse foldLeft List(List[T]())) { (lst, e) => lst match {
+        case List(Nil)    => List(List(e))
+        case (x::xs)::ys  => if (x == e) (e::x::xs)::ys else List(e)::(x::xs)::ys
+      }
+    }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
