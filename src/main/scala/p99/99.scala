@@ -59,8 +59,11 @@ object ex99 {
       }
     }
 
-  def encode[T](s: List[T]): List[(Int, T)] =  pack(s) map { l => (l.length, l.head)}
+  def encode[T](s: List[T]): List[(Int, T)] =
+    pack(s) map { l => (l.length, l.head) }
 
+  def runLengthEncodingModified[T](s:List[T]): List[Any] =
+    encode(s) map { t => if (t._1 == 1.0) t._2 else t }
 
   def main(args: Array[String]) = {
     // if scratch needed...
