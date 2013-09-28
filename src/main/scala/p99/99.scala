@@ -59,6 +59,9 @@ object ex99 {
       }
     }
 
+  def encode[T](s: List[T]): List[(Int, T)] =  pack(s) map { l => (l.length, l.head)}
+
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

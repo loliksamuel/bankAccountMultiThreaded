@@ -13,4 +13,8 @@ class ex99FunTests extends FunSuite {
     assert(ex99.pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e)) == List(List('a, 'a, 'a, 'a),List('b), List('c, 'c), List('d), List('e, 'e, 'e, 'e)))
   }
 
+  test("encode") {
+    assert(ex99.encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e)) == List((4,'a),(1,'b),(2,'c), (1,'d), (4, 'e)))
+  }
+
 }
