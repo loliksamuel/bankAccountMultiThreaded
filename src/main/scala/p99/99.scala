@@ -72,7 +72,7 @@ object ex99 {
   def duplicate[T](l: List[T]): List[T] = duplicateN(2, l)
 
   def duplicateN[T](n: Int, l: List[T]): List[T] =
-    l flatMap { x => List.make(n, x) }
+    l flatMap (List.make(n, _))
 
   def main(args: Array[String]) = {
     // if scratch needed...
