@@ -24,4 +24,9 @@ class ex99FunTests extends FunSuite {
   test("decode - run-length encoding") {
     assert(ex99.decode(List((4, 'a), (1, 'b), (2, 'c), (1, 'd), (4, 'e))) == List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e))
   }
+
+  test("encode1 - direct run-length encoding") {
+    assert(ex99.encode1(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e)) == List((4, 'a), (1, 'b), (2, 'c), (1, 'd), (4, 'e)))
+  }
+
 }

@@ -68,6 +68,14 @@ object ex99 {
   def decode[T](s: List[(Int, T)]): List[T] =
     s flatMap { x => List.make(x._1, x._2) }
 
+  def encode1[T](l:List[T]): List[(Int, T)] =
+    (l.reverse foldLeft List[(Int, T)]())
+      { (lst, e) => lst match {
+         case List()      => List((1, e))
+         case (n, x)::xs  => if (x == e) (n+1, e)::xs else (1, e)::(n, x)::xs
+       }
+      }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
