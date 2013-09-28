@@ -65,6 +65,9 @@ object ex99 {
   def runLengthEncodingModified[T](s:List[T]): List[Any] =
     encode(s) map { t => if (t._1 == 1.0) t._2 else t }
 
+  def decode[T](s: List[(Int, T)]): List[T] =
+    s flatMap { x => List.make(x._1, x._2) }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
