@@ -29,4 +29,8 @@ class ex99FunTests extends FunSuite {
     assert(ex99.encode1(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e)) == List((4, 'a), (1, 'b), (2, 'c), (1, 'd), (4, 'e)))
   }
 
+  test("duplicate element in double") {
+    assert(ex99.duplicate(List(1, 2, 3, 4)) == List(1, 1, 2, 2, 3, 3, 4, 4))
+  }
+
 }
