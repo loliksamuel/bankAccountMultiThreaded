@@ -43,4 +43,9 @@ class ex99FunTests extends FunSuite {
     assert(ex99.dropN(2, List(3, 2, 1, 0, 4)) == List(3, 1, 4))
   }
 
+  test("split a list at a given position into 2 lists.") {
+    assert(ex99.splitN(3, List(1, 2, 3, 4)) == (List(1, 2, 3), List(4)))
+    assert(ex99.splitN(2, List(3, 2, 1, 0, 4)) == (List(3, 2), List(1, 0, 4)))
+  }
+
 }

@@ -77,6 +77,8 @@ object ex99 {
   def dropN[T](n: Int, l: List[T]): List[T] =
     l.zipWithIndex filter { v => ((v._2 + 1) % n != 0) } map { v => v._1 }
 
+  def splitN[T](n: Int, l: List[T]): (List[T], List[T]) = (l.take(n), l.drop(n))
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
