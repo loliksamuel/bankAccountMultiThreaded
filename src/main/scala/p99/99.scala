@@ -74,6 +74,11 @@ object ex99 {
   def duplicateN[T](n: Int, l: List[T]): List[T] =
     l flatMap (List.make(n, _))
 
+  def dropN[T](n: Int, l: List[T]): List[T] = {
+    if (l.isEmpty) l
+    else l.take(n-1) ++ dropN(n, l.drop(n))
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

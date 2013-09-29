@@ -38,4 +38,9 @@ class ex99FunTests extends FunSuite {
     assert(ex99.duplicateN(5, List(3, 2)) == List(3, 3, 3, 3, 3, 2, 2, 2, 2, 2))
   }
 
+  test("drop every nth element on the list.") {
+    assert(ex99.dropN(3, List(1, 2, 3, 4)) == List(1, 2, 4))
+    assert(ex99.dropN(2, List(3, 2, 1, 0, 4)) == List(3, 1, 4))
+  }
+
 }
