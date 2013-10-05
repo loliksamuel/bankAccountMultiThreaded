@@ -79,6 +79,10 @@ object ex99 {
 
   def splitN[T](n: Int, l: List[T]): (List[T], List[T]) = (l.take(n), l.drop(n))
 
+  def slice[T](start: Int, end: Int, l: List[T]): List[T] = {
+    l.drop(start).zipWithIndex filter { v => v._2 < (end - start) } map { v => v._1 }
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

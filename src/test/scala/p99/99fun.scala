@@ -48,4 +48,8 @@ class ex99FunTests extends FunSuite {
     assert(ex99.splitN(2, List(3, 2, 1, 0, 4)) == (List(3, 2), List(1, 0, 4)))
   }
 
+  test("slice") {
+    assert(ex99.slice(0, 3, List(1, 2, 3, 4, 5)) == List(1, 2, 3))
+    assert(ex99.slice(4, 5, List(1, 2, 3, 4, 5, 6, 7)) == List(5))
+  }
 }
