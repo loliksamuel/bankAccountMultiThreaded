@@ -81,6 +81,11 @@ object ex99 {
 
   def slice[T](start: Int, end: Int, l: List[T]): List[T] = l.drop(start).take (end - start)
 
+  def rotate[T](n: Int, l: List[T]): List[T] = {
+    val (end, start) = splitN(n, l)
+    start ++ end
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
