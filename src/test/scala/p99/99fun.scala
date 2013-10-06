@@ -58,5 +58,7 @@ class ex99FunTests extends FunSuite {
     assert(ex99.rotate(1, List(1, 2, 3, 4, 5)) == List(2, 3, 4, 5, 1))
     assert(ex99.rotate(2, List(1, 2, 3, 4, 5)) == List(3, 4, 5, 1, 2))
     assert(ex99.rotate(5, List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4, 5))
+      println(ex99.rotate(-1, List(1, 2, 3, 4, 5)))
+    assert(ex99.rotate(-1, List(1, 2, 3, 4, 5)) == List(5, 1, 2, 3, 4))
   }
 }

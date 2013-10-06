@@ -82,7 +82,7 @@ object ex99 {
   def slice[T](start: Int, end: Int, l: List[T]): List[T] = l.drop(start).take (end - start)
 
   def rotate[T](n: Int, l: List[T]): List[T] = {
-    val (end, start) = splitN(n, l)
+    val (end, start) = splitN((n+l.length) %l.length, l)
     start ++ end
   }
 
