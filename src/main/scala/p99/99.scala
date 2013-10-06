@@ -102,6 +102,10 @@ object ex99 {
     else internalRemoveK(k, l)
   }
 
+  def insertAt[T](n: T, k: Int, l: List[T]): List[T] = l.splitAt(k) match {
+      case (pre, post) => pre ++ (n :: post)
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

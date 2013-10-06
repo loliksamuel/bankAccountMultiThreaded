@@ -3,6 +3,11 @@ package p99
 import org.scalatest.FunSuite
 
 class ex99FunTests extends FunSuite {
+  def ass(assertion: Boolean) = {
+    println("assertion :" + assertion)
+    assert(assertion)
+  }
+
   test("compress.") {
     assert(ex99.compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'd, 'e, 'e, 'e, 'e)) == List('a,'b,'c,'d,'e))
     assert(ex99.compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)) == List('a,'b,'c,'a,'d,'e))
@@ -70,5 +75,11 @@ class ex99FunTests extends FunSuite {
     intercept[NoSuchElementException] {
       ex99.removeK(-1, List())
     }
+  }
+
+  test("insertAt") {
+    assert(ex99.insertAt(-1, 0, List(1, 2, 3, 4, 5)) == List(-1, 1, 2, 3, 4, 5))
+    assert(ex99.insertAt(-1, 1, List(1, 2, 3, 4, 5)) == List(1, -1, 2, 3, 4, 5))
+    assert(ex99.insertAt('f, 3, List('a, 'b, 'c, 'd, 'e)) == List('a, 'b, 'c, 'f, 'd, 'e))
   }
 }
