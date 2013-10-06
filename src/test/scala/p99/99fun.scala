@@ -82,4 +82,10 @@ class ex99FunTests extends FunSuite {
     assert(ex99.insertAt(-1, 1, List(1, 2, 3, 4, 5)) == List(1, -1, 2, 3, 4, 5))
     assert(ex99.insertAt('f, 3, List('a, 'b, 'c, 'd, 'e)) == List('a, 'b, 'c, 'f, 'd, 'e))
   }
+
+  test("range") {
+    assert(ex99.range(0, 2) == List(0, 1, 2))
+    assert(ex99.range(2, 5) == List(2, 3, 4, 5))
+    assert(ex99.range(5, 5) == List(5))
+  }
 }

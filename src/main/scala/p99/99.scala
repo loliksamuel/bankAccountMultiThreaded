@@ -106,6 +106,8 @@ object ex99 {
       case (pre, post) => pre ++ (n :: post)
   }
 
+  def range(start: Int, end: Int): List[Int] = Range(start, end + 1).toList
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))
