@@ -97,7 +97,8 @@ object ex99 {
       start ++ end.tail
     }
 
-    if (k >= l.length) l
+    if (k < 0) throw new NoSuchElementException
+    else if (k >= l.length) l
     else internalRemoveK(k, l)
   }
 

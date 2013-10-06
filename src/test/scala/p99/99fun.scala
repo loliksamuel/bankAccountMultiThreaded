@@ -66,5 +66,9 @@ class ex99FunTests extends FunSuite {
     assert(ex99.removeK(1, List(1, 2, 3, 4, 5)) == List(1, 3, 4, 5))
     assert(ex99.removeK(2, List(1, 2, 3, 4, 5)) == List(1, 2, 4, 5))
     assert(ex99.removeK(6, List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4, 5))
+
+    intercept[NoSuchElementException] {
+      ex99.removeK(-1, List())
+    }
   }
 }
