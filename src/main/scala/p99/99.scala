@@ -91,6 +91,16 @@ object ex99 {
     else rotatePositiveIndex(n, l)
   }
 
+  def removeK[T](k: Int, l: List[T]): List[T] = {
+    def internalRemoveK(k: Int, l:List[T]) = {
+      val (start, end) = splitN(k, l)
+      start ++ end.tail
+    }
+
+    if (k >= l.length) l
+    else internalRemoveK(k, l)
+  }
+
   def main(args: Array[String]) = {
     // if scratch needed...
     println(reverse(List()))

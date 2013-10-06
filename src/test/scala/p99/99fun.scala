@@ -60,4 +60,11 @@ class ex99FunTests extends FunSuite {
     assert(ex99.rotate(5, List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4, 5))
     assert(ex99.rotate(-1, List(1, 2, 3, 4, 5)) == List(5, 1, 2, 3, 4))
   }
+
+  test("removeK") {
+    assert(ex99.removeK(0, List(1, 2, 3, 4, 5)) == List(2, 3, 4, 5))
+    assert(ex99.removeK(1, List(1, 2, 3, 4, 5)) == List(1, 3, 4, 5))
+    assert(ex99.removeK(2, List(1, 2, 3, 4, 5)) == List(1, 2, 4, 5))
+    assert(ex99.removeK(6, List(1, 2, 3, 4, 5)) == List(1, 2, 3, 4, 5))
+  }
 }
