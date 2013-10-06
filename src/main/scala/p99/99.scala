@@ -91,14 +91,14 @@ object ex99 {
     else rotatePositiveIndex(n, l)
   }
 
-  def removeK[T](k: Int, l: List[T]): List[T] = {
+  def removeK[T](k: Int, l: List[T]): (List[T], Option[T]) = {
     def internalRemoveK(k: Int, l:List[T]) = {
       val (start, end) = splitN(k, l)
-      start ++ end.tail
+      (start ++ end.tail, Some(end.head))
     }
 
     if (k < 0) throw new NoSuchElementException
-    else if (k >= l.length) l
+    else if (k >= l.length) (l, None)
     else internalRemoveK(k, l)
   }
 
