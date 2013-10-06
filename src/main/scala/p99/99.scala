@@ -106,7 +106,7 @@ object ex99 {
       case (pre, post) => pre ++ (n :: post)
   }
 
-  def range(start: Int, end: Int): List[Int] = Range(start, end + 1).toList
+  def range(start: Int, end: Int): List[Int] = List.range(start, end + 1)
 
   def main(args: Array[String]) = {
     // if scratch needed...
