@@ -3,9 +3,14 @@ package p99
 import org.scalatest.FunSuite
 
 class ex99FunTests extends FunSuite {
-  def ass(assertion: Boolean) = {
-    println("assertion :" + assertion)
-    assert(assertion)
+  def assertion[T](actual: T, expected: T) = {
+    assert(actual == expected)
+  }
+
+  def ass[T](actual: T, expected: T) = {
+    println("actual:" + actual)
+    println("expected:" + expected)
+    assertion(actual, expected)
   }
 
   test("compress.") {

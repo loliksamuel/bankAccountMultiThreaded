@@ -106,17 +106,14 @@ object ex99 {
       case (pre, post) => pre ++ (n :: post)
   }
 
-  def range(start: Int, end: Int): List[Int] = List.range(start, end + 1)
+  def range(start: Int, end: Int): List[Int] = {
+    def internalRange(start: Int, end: Int, l: List[Int]): List[Int] =
+        if (start > end) l.reverse
+        else internalRange(start + 1, end, start :: l)
+
+    internalRange(start, end , List())
+  }
 
   def main(args: Array[String]) = {
-    // if scratch needed...
-    println(reverse(List()))
-    println(reverse(List(1)))
-
-    val res = compress(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
-    println(res)
-
-    val sres = compress(List("-1", "-1"))
-    println(sres)
   }
 }
