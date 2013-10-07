@@ -115,14 +115,14 @@ object ex99 {
   }
 
   def randomSelect[T](n: Int, l: List[T]): List[T] = {
-    def internalRandomSelect(k: Int, lst: List[T]) =
-      if (k == 0 || lst.length == 0) l
-      else removeK(k % lst.length, lst) match {
-        case (nl, Some(e)) => e :: randomSelect(k - 1, nl)
+    def internalRandomSelect(k: Int, lst: List[T], r: util.Random): List[T] =
+      if (k == 0 || lst.length == 0) Nil
+      else removeK(r.nextInt(lst.length), lst) match {
+        case (nl, Some(e)) => e :: internalRandomSelect(k - 1, nl, r)
         case (nl, None)    => nl
       }
 
-    internalRandomSelect(n, l).take(n)
+    internalRandomSelect(n, l, new util.Random)
   }
 
   def main(args: Array[String]) = {

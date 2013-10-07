@@ -95,7 +95,9 @@ class ex99FunTests extends FunSuite {
   }
 
   test("randomSelect") {
-    ass(ex99.randomSelect(3, List.range(20, 10)).length, 3)
+    assert(ex99.randomSelect(3, List(1, 2, 4, 6, 10)).length == 3)
+    assert(ex99.randomSelect(4, List(1, 2, 4, 6, 10)).length == 4)
+    assert(ex99.randomSelect(5, List(1, 2, 4, 6, 10)).length == 5)
   }
 
 }
