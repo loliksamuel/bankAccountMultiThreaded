@@ -114,6 +114,17 @@ object ex99 {
     internalRange(start, end , List())
   }
 
+  def randomSelect[T](n: Int, l: List[T]): List[T] = {
+    def internalRandomSelect(k: Int, lst: List[T]) =
+      if (k == 0 || lst.length == 0) l
+      else removeK(k % lst.length, lst) match {
+        case (nl, Some(e)) => e :: randomSelect(k - 1, nl)
+        case (nl, None)    => nl
+      }
+
+    internalRandomSelect(n, l).take(n)
+  }
+
   def main(args: Array[String]) = {
   }
 }
