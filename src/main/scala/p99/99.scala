@@ -125,6 +125,8 @@ object ex99 {
     internalRandomSelect(n, l, new util.Random)
   }
 
+  def lotto[T](n: Int, end: Int): List[Int] = randomSelect(n + 1, Range(1, n).toList)
+
   def main(args: Array[String]) = {
   }
 }

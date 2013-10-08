@@ -47,7 +47,11 @@ object ex99ScalaCheck extends Properties("ex99") {
     }
 
   property("randomSelect") = forAll { (l: List[List[AnyVal]], k: Int) =>
-      val fl = ex99.randomSelect(k, l)
-      fl forall (l contains _)
+      ex99.randomSelect(k, l) forall (l contains _)
+    }
+
+  property("lotto") = forAll { (k: Int, end: Int) =>
+      val l = Range(1, end).toList
+      ex99.lotto(k, end) forall (l contains _)
     }
 }
