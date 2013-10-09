@@ -71,14 +71,14 @@ class ex99FunTests extends FunSuite {
     assert(ex99.rotate(-1, List(1, 2, 3, 4, 5)) == List(5, 1, 2, 3, 4))
   }
 
-  test("removeK") {
-    assert(ex99.removeK(0, List(1, 2, 3, 4, 5)) == (List(2, 3, 4, 5), Some(1)))
-    assert(ex99.removeK(1, List(1, 2, 3, 4, 5)) == (List(1, 3, 4, 5), Some(2)))
-    assert(ex99.removeK(2, List(1, 2, 3, 4, 5)) == (List(1, 2, 4, 5), Some(3)))
-    assert(ex99.removeK(6, List(1, 2, 3, 4, 5)) == (List(1, 2, 3, 4, 5), None))
+  test("removeAt") {
+    assert(ex99.removeAt(0, List(1, 2, 3, 4, 5)) == (List(2, 3, 4, 5), Some(1)))
+    assert(ex99.removeAt(1, List(1, 2, 3, 4, 5)) == (List(1, 3, 4, 5), Some(2)))
+    assert(ex99.removeAt(2, List(1, 2, 3, 4, 5)) == (List(1, 2, 4, 5), Some(3)))
+    assert(ex99.removeAt(6, List(1, 2, 3, 4, 5)) == (List(1, 2, 3, 4, 5), None))
 
     intercept[NoSuchElementException] {
-      ex99.removeK(-1, List())
+      ex99.removeAt(-1, List())
     }
   }
 

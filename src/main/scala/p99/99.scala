@@ -91,7 +91,7 @@ object ex99 {
     else rotatePositiveIndex(n, l)
   }
 
-  def removeK[T](k: Int, l: List[T]): (List[T], Option[T]) = {
+  def removeAt[T](k: Int, l: List[T]): (List[T], Option[T]) = {
     def internalRemoveK(k: Int, l:List[T]) = {
       val (start, end) = splitN(k, l)
       (start ++ end.tail, Some(end.head))
@@ -117,7 +117,7 @@ object ex99 {
   def randomSelect[T](n: Int, l: List[T]): List[T] = {
     def internalRandomSelect(k: Int, lst: List[T], r: util.Random): List[T] =
       if (k == 0) Nil
-      else removeK(r.nextInt(lst.length), lst) match {
+      else removeAt(r.nextInt(lst.length), lst) match {
         case (nl, Some(e)) => e :: internalRandomSelect(k - 1, nl, r)
         case (nl, None)    => nl
       }
@@ -126,6 +126,8 @@ object ex99 {
   }
 
   def lotto[T](n: Int, end: Int): List[Int] = randomSelect(n + 1, Range(1, n).toList)
+
+
 
   def main(args: Array[String]) = {
   }
