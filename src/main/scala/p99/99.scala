@@ -116,7 +116,7 @@ object ex99 {
 
   def randomSelect[T](n: Int, l: List[T]): List[T] = {
     def internalRandomSelect(k: Int, lst: List[T], r: util.Random): List[T] =
-      if (k == 0 || lst.length == 0) Nil
+      if (k == 0) Nil
       else removeK(r.nextInt(lst.length), lst) match {
         case (nl, Some(e)) => e :: internalRandomSelect(k - 1, nl, r)
         case (nl, None)    => nl
