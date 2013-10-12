@@ -127,7 +127,10 @@ object ex99 {
 
   def lotto[T](n: Int, end: Int): List[Int] = randomSelect(n + 1, Range(1, n).toList)
 
-
+  def randomPermute[T](l: List[T]): List[T] = {
+    val (nl, Some(v)) = removeAt((new util.Random).nextInt(l.length), l)
+    v :: nl
+  }
 
   def main(args: Array[String]) = {
   }

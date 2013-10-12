@@ -100,4 +100,9 @@ class ex99FunTests extends FunSuite {
     assert(ex99.randomSelect(5, List(1, 2, 4, 6, 10)).length == 5)
   }
 
+  test("randomPermute") {
+    val list = List(1, 2, 3, 4, 5)
+    assert(ex99.randomPermute(list).toSet == list.toSet)
+    assert(ex99.randomPermute(list).length == list.length)
+  }
 }
