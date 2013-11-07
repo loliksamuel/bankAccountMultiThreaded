@@ -1,4 +1,4 @@
-package coursera
+package coursera.generators
 
 import java.util.Random
 
@@ -37,28 +37,27 @@ trait Generator[+T] {
 
 }
 
-object ListGenerator {
-  val integers = new Generator[Int] {
+object StreamGenerator {
+  val integers: Generator[Int] = new Generator[Int] {
       val rand = new Random
       def generate = rand.nextInt()
     }
 
-  val booleans = for (x <- integers) yield x > 0
+  val booleans: Generator[Boolean] = for (x <- integers) yield x > 0
 
-  def lists: Generator[List[Int]] = for {
+  def lists: Generator[Stream[Int]] = for {
       isEmpty <- booleans
       list    <- if (isEmpty) emptyLists else nonEmptyLists
     } yield list
 
-  def emptyLists = integers.single(Nil)
+  def emptyLists: Generator[Stream[Int]] = new Generator[Stream[Int]] {
+      def generate = Stream.empty
+    }
 
-  def nonEmptyLists = for {
+  def nonEmptyLists: Generator[Stream[Int]] = for {
       head <- integers
       tail <- lists
-    } yield head :: tail
-}
-
-object TestGenerators {
+    } yield head #:: tail
 
   def main(args: List[String]) = {
 
@@ -67,8 +66,8 @@ object TestGenerators {
         def generate = rand.nextInt
       }
 
-    integers.pairs(integers, integers)
+    val someRand = integers.pairs(integers, integers)
 
-    println(ListGenerator.lists)
+    println("Generate some random int list: " + lists)
   }
 }
