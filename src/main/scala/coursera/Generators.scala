@@ -20,6 +20,11 @@ trait Generator[+T] {
       def generate = f(self.generate).generate
     }
 
+  def pairs[T, U](t: Generator[T], u:Generator[U]) = for {
+      x <- t
+      y <- u
+    } yield (x, y)
+
   def single[T](x: T): Generator[T] = new Generator[T] {
       def generate = x
     }
@@ -29,24 +34,18 @@ trait Generator[+T] {
 
   def oneOf[T](xs: T*): Generator[T] =
     for(idx <- choose(0, xs.length)) yield xs(idx)
+
 }
 
-object Generator {
-  def pairs[T, U](t: Generator[T], u:Generator[U]) = new Generator[(T, U)] {
-      def generate = (t.generate, u.generate)
-    }
+object TestGenerators {
 
   def main(args: List[String]) = {
-    val rand = new Random
-    println(rand.nextInt())
 
     val integers = new Generator[Int] {
         val rand = new Random
-        def generate = rand.nextInt()
+        def generate = rand.nextInt
       }
 
-    val booleans = for (x <- integers) yield x > 0
-
-    val ps = pairs(integers, integers)
+    integers.pairs(integers, integers)
   }
 }
