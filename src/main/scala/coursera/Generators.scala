@@ -37,6 +37,27 @@ trait Generator[+T] {
 
 }
 
+object ListGenerator {
+  val integers = new Generator[Int] {
+      val rand = new Random
+      def generate = rand.nextInt()
+    }
+
+  val booleans = for (x <- integers) yield x > 0
+
+  def lists: Generator[List[Int]] = for {
+      isEmpty <- booleans
+      list    <- if (isEmpty) emptyLists else nonEmptyLists
+    } yield list
+
+  def emptyLists = integers.single(Nil)
+
+  def nonEmptyLists = for {
+      head <- integers
+      tail <- lists
+    } yield head :: tail
+}
+
 object TestGenerators {
 
   def main(args: List[String]) = {
@@ -47,5 +68,7 @@ object TestGenerators {
       }
 
     integers.pairs(integers, integers)
+
+    println(ListGenerator.lists)
   }
 }
