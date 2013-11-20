@@ -97,10 +97,34 @@ object tryouts {
 // List(prepend a new string to the list!, hello, did you understand the futures/promises?, I'm beginning to see something, is this light?)
 // [success] Total time: 0 s, completed 20 nov. 2013 13:40:16
 
+  def simpleFirstFutureThrowsSoMapFutureWillTransmitTheError(): Unit = {
+    println("Start - simpleFirstFutureThrowsSoMapFutureWillTransmitTheError method.")
+
+    val f: Future[Int] = future {
+      1 / 0
+    }
+
+    val newAddFutureActionFuture: Future[Int] =
+      f map (n => 1 + n)
+
+    newAddFutureActionFuture onComplete {
+      case Failure(t) => println(t + " happened!")
+      case _          => println("this will not happen")
+    }
+
+    println("Stop - simpleFirstFutureThrowsSoMapFutureWillTransmitTheError method.")
+  }
+// [info] Running concurrency.tryouts
+// Start - simpleFirstFutureThrowsSoMapFutureWillTransmitTheError method.
+// Stop - simpleFirstFutureThrowsSoMapFutureWillTransmitTheError method.
+// java.lang.ArithmeticException: / by zero happened!
+// [success] Total time: 0 s, completed 20 nov. 2013 13:44:02
+
   def main(args: Array[String]): Unit = {
 //    simpleFuture
 //    simpleFutureOnSuccessOnFailure
-    simpleFutureWillPrependANewStringToList
+//    simpleFutureWillPrependANewStringToList
+    simpleFirstFutureThrowsSoMapFutureWillTransmitTheError
   }
 
 }
