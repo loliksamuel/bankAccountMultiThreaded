@@ -120,11 +120,30 @@ object tryouts {
 // java.lang.ArithmeticException: / by zero happened!
 // [success] Total time: 0 s, completed 20 nov. 2013 13:44:02
 
+  def loadFileFromFuture(): Unit = {
+    println("Start - loadFileFromFuture method.")
+    val firstOccurrence: Future[Int] = future {
+        val source = scala.io.Source.fromFile("src/main/resources/linuxwords.txt")
+        source.toSeq.indexOfSlice("Zulu")
+      }
+
+    firstOccurrence onComplete {
+      case Success(x) => println("Occurence was found at position " + x)
+    }
+    println("Stop - loadFileFromFuture method.")
+  }
+// [info] Running concurrency.tryouts
+// Start - loadFileFromFuture method.
+// Stop - loadFileFromFuture method.
+// [success] Total time: 4 s, completed 20 nov. 2013 18:57:00
+// > Occurence was found at position 408808
+
   def main(args: Array[String]): Unit = {
 //    simpleFuture
 //    simpleFutureOnSuccessOnFailure
 //    simpleFutureWillPrependANewStringToList
-    simpleFirstFutureThrowsSoMapFutureWillTransmitTheError
+//    simpleFirstFutureThrowsSoMapFutureWillTransmitTheError
+    loadFileFromFuture
   }
 
 }
