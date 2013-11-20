@@ -31,8 +31,32 @@ object tryouts {
 // future completes: List(hello, did you understand the futures/promises?)
 // [success] Total time: 1 s, completed 20 nov. 2013 09:25:05
 
+  def simpleFutureOnSuccessOnFailure(): Unit = {
+    println("Start - simpleFutureOnSuccessOnFailure method.")
+    val f: Future[List[String]] = future {
+      computeSomeStrings
+    }
+
+    f onSuccess {
+      case x => println("future completes: " + x)
+    }
+
+    f onFailure {
+      case t => println("an error occurred.")
+    }
+
+    println("Stop - simpleFutureOnSuccessOnFailure method.")
+  }
+// [info] Running concurrency.tryouts
+// Start - simpleFutureOnSuccessOnFailure method.
+// future completes: List(hello, did you understand the futures/promises?)
+// Stop - simpleFutureOnSuccessOnFailure method.
+// [success] Total time: 1 s, completed 20 nov. 2013 13:16:18
+
   def main(args: Array[String]): Unit = {
-    simpleFuture
+//    simpleFuture
+
+    simpleFutureOnSuccessOnFailure
   }
 
 }
