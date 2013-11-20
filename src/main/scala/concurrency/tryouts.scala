@@ -74,10 +74,33 @@ object tryouts {
 // This is the right exception, the other will not be triggered fortunately.
 // [success] Total time: 1 s, completed 20 nov. 2013 13:31:57
 
+  def simpleFutureWillPrependANewStringToList(): Unit = {
+    println("Start - simpleFutureWillPrependANewStringToList method.")
+
+    val f: Future[List[String]] = future {
+      computeSomeStrings
+    }
+
+    val newStringPrependActionFuture: Future[List[String]] =
+      f map (xs => "prepend a new string to the list!" :: xs)
+
+    newStringPrependActionFuture onComplete {
+      case Success(xs) => println(xs)
+      case Failure(_) => println("error")
+    }
+
+    println("Stop - simpleFutureWillPrependANewStringToList method.")
+  }
+// [info] Running concurrency.tryouts
+// Start - simpleFutureWillPrependANewStringToList method.
+// Stop - simpleFutureWillPrependANewStringToList method.
+// List(prepend a new string to the list!, hello, did you understand the futures/promises?, I'm beginning to see something, is this light?)
+// [success] Total time: 0 s, completed 20 nov. 2013 13:40:16
+
   def main(args: Array[String]): Unit = {
 //    simpleFuture
 //    simpleFutureOnSuccessOnFailure
-    simpleFutureWithFailure
+    simpleFutureWillPrependANewStringToList
   }
 
 }
