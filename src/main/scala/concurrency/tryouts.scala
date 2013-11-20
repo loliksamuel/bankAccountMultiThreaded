@@ -10,7 +10,9 @@ import scala.async.Async.{async, await}
 
 object tryouts {
 
-  def computeSomeStrings: List[String] = List("hello", "did you understand the futures/promises?")
+  def computeSomeStrings: List[String] = List("hello",
+                                              "did you understand the futures/promises?",
+                                              "I'm beginning to see something, is this light?")
 
   def simpleFuture(): Unit = {
     println("Start - simpleFuture method.")
