@@ -17,8 +17,11 @@ resolvers ++= Seq(
   "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases"
 )
 
+libraryDependencies += "org.scala-lang" % "scala-reflect" % "2.10.2"
+
 libraryDependencies ++= Seq(
-  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test",
+  "org.scala-lang.modules" %% "scala-async" % "0.9.0-M2"
 )
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "2.0.M8" % "test"
