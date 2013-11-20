@@ -55,10 +55,29 @@ object tryouts {
 // Stop - simpleFutureOnSuccessOnFailure method.
 // [success] Total time: 1 s, completed 20 nov. 2013 13:16:18
 
+  def simpleFutureWithFailure(): Unit = {
+    println("Start - simpleFutureWithFailure method.")
+    val f = future(2 / 0)
+
+    f onFailure {
+      case t: ArithmeticException =>
+        println("This is the right exception, the other will not be triggered fortunately.")
+      case t: NullPointerException =>
+        println("I'd be amazed if this printed out.")
+    }
+
+    println("Stop - simpleFutureWithFailure method.")
+  }
+// [info] Running concurrency.tryouts
+// Start - simpleFutureWithFailure method.
+// Stop - simpleFutureWithFailure method.
+// This is the right exception, the other will not be triggered fortunately.
+// [success] Total time: 1 s, completed 20 nov. 2013 13:31:57
+
   def main(args: Array[String]): Unit = {
 //    simpleFuture
-
-    simpleFutureOnSuccessOnFailure
+//    simpleFutureOnSuccessOnFailure
+    simpleFutureWithFailure
   }
 
 }
