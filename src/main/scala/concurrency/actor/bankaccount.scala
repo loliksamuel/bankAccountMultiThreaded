@@ -26,12 +26,20 @@ class BankAccount extends Actor {
   var balance = BigInt(0)
 
   def receive = {
-    case Deposit(amount)  => balance += amount
-                             sender ! Done
-    case Withdraw(amount) => balance -= amount
-                             sender ! Done
-    case Balance(name)    => sender ! (name, balance)
-    case _                => sender ! Failed
+    case Deposit(amount)  =>
+      balance += amount
+      sender ! Done
+    case Withdraw(amount) =>
+      if (balance < amount)
+        sender ! Failed
+      else {
+        balance -= amount
+        sender ! Done
+      }
+    case Balance(name)    =>
+      sender ! (name, balance)
+    case _                =>
+      sender ! Failed
   }
 }
 
@@ -78,7 +86,7 @@ class TransferMain extends Actor {
   accountB ! BankAccount.Deposit(20)
 
   def receive: Receive = {
-    case BankAccount.Done => transfer(40)
+    case BankAccount.Done => transfer(100)
   }
 
   def transfer(amount: BigInt): Unit = {
