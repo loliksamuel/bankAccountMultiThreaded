@@ -3,7 +3,7 @@ package concurrency.actor
 import akka.actor.Actor
 import akka.actor.Props
 
-class Counter extends Actor {
+class Counter1 extends Actor {
   var count = 0
 
   def receive = {
@@ -14,9 +14,9 @@ class Counter extends Actor {
   }
 }
 
-class CounterMain extends Actor {
+class Counter1CounterMain extends Actor {
 
-  val counter = context.actorOf(Props[Counter], "counter")
+  val counter = context.actorOf(Props[Counter1], "counter1")
 
   counter ! "incr"
   counter ! "incr"
