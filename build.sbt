@@ -36,5 +36,7 @@ libraryDependencies ++= Seq("com.netflix.rxjava" % "rxjava-scala" % "0.15.0",
                             "com.squareup.retrofit" % "retrofit" % "1.0.0",
                             "org.scala-lang.modules" %% "scala-async" % "0.9.0-M2")
 
+resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+
 libraryDependencies ++= Seq("com.typesafe.akka" %% "akka-actor" % "2.2.3",
                             "com.typesafe.akka" %% "akka-testkit" % "2.2.3")
