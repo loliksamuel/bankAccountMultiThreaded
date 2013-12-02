@@ -13,7 +13,8 @@ object BankAccount {
     require(amount > 0)
   }
 
-  case object Balance
+  case class Balance(name: String)
+
   case object Done
   case object Failed
 
@@ -29,7 +30,7 @@ class BankAccount extends Actor {
                              sender ! Done
     case Withdraw(amount) => balance -= amount
                              sender ! Done
-    case Balance          => sender ! balance
+    case Balance(name)    => sender ! (name, balance)
     case _                => sender ! Failed
   }
 }
@@ -87,16 +88,19 @@ class TransferMain extends Actor {
     context.become({
                      case WireTransfer.Done =>
                        println("Wire transfer success!")
+                       checkAccounts
                      case WireTransfer.Failed =>
                        println("Wire transfer failure!")
+                       context.stop(self)
                    })
+  }
 
-    accountA ! BankAccount.Balance
+  def checkAccounts: Unit = {
+    accountA ! BankAccount.Balance("A")
+    accountB ! BankAccount.Balance("B")
 
-    context.become({case amount: BigInt =>
-                     println(s"Amount: $amount")
+    context.become({case (name, amount) =>
+                     println(s"Account '$name' amount: $amount")
                    })
-
-    accountB ! BankAccount.Balance
   }
 }
