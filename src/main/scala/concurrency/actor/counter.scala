@@ -11,27 +11,17 @@ class Counter extends Actor {
   }
 }
 
-object CounterMain {
-  case object Done
-}
-
 class CounterMain extends Actor {
 
-  override def preStart(): Unit = {
-//    val counterMain = context.actorOf(Props[CounterMain], "countermain")
-    val counter = context.actorOf(Props[Counter], "counter")
+  val counter = context.actorOf(Props[Counter], "counter")
 
-    counter ! "incr"
-    counter ! "incr"
-    counter ! "get"
+  counter ! "incr"
+  counter ! "incr"
+  counter ! "get"
 
-    self ! CounterMain.Done
-  }
+  context.stop(self)
 
   def receive = {
-    case count: Int =>
-      println(s"count was $count")
-    case CounterMain.Done =>
-      context.stop(self)
+    case count: Int => println(s"count was $count")
   }
 }
