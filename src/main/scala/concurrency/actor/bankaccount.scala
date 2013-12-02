@@ -74,11 +74,11 @@ class TransferMain extends Actor {
   val accountA = context.actorOf(Props[BankAccount], "accountA")
   val accountB = context.actorOf(Props[BankAccount], "accountB")
 
-  accountA ! BankAccount.Deposit(100)
+  accountA ! BankAccount.Deposit(80)
   accountB ! BankAccount.Deposit(20)
 
   def receive: Receive = {
-    case BankAccount.Done => transfer(50)
+    case BankAccount.Done => transfer(40)
   }
 
   def transfer(amount: BigInt): Unit = {
