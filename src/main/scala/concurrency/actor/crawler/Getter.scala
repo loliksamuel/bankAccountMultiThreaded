@@ -24,6 +24,9 @@ object Getter {
   }
 }
 
+/** Class in charge of fetching the url's content.
+  * The depth transits simply in the message from input to output.
+  */
 class Getter(url: String, depth: Int) extends Actor {
   import Getter._
 

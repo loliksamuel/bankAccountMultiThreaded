@@ -5,6 +5,8 @@ import com.ning.http.client.AsyncHttpClient
 import scala.concurrent.Promise
 import java.util.concurrent.Executor
 
+/** Web Http Requester.
+  */
 object WebClient {
   private val client = new AsyncHttpClient
 
