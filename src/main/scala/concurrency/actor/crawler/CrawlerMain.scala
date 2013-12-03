@@ -5,7 +5,7 @@ import scala.concurrent.duration._
 
 class CrawlerMain extends Actor {
   import Receptionist._
-//  import context.dispatcher
+  import context.dispatcher
 
   val receptionist = context.actorOf(Props[Receptionist], "receptionist")
 
@@ -14,12 +14,11 @@ class CrawlerMain extends Actor {
   receptionist ! Get("http://www.google.com/3")
   receptionist ! Get("http://www.google.com/4")
 
-  context.setReceiveTimeout(10.seconds)
-//  context.system.scheduler.scheduleOnce(20.seconds, self, ReceiveTimeout)
+  context.system.scheduler.scheduleOnce(10.seconds, self, ReceiveTimeout)
 
   def receive = {
     case ReceiveTimeout =>
-      println("Fetch $url timeout!")
+      println("Timeout!")
       context.stop(self)
 
     case Result(url, links) =>
