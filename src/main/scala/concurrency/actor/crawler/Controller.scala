@@ -12,8 +12,9 @@ object Controller {
   */
 class Controller extends Actor {
   import Controller._
+  import context.dispatcher
 
-  context.setReceiveTimeout(10.seconds)// limit the waiting time by 10 seconds
+  context.system.scheduler.scheduleOnce(10.seconds, self, ReceiveTimeout)
 
   var cache = Set.empty[String]
   var children = Set.empty[ActorRef]
