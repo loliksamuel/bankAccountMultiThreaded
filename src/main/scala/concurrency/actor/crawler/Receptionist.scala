@@ -9,8 +9,6 @@ object Receptionist {
   case class Failed(url: String)
 }
 
-/**
-  */
 class Receptionist extends Actor {
   import Receptionist._
 
@@ -39,6 +37,7 @@ class Receptionist extends Actor {
 
   var reqNo = 0
   def runNext(queue: Vector[Job]): Receive = {
+    reqNo += 1
     if (queue.isEmpty) waiting
     else {
       val controller = context.actorOf(Props[Controller], s"crawlerController$reqNo")
