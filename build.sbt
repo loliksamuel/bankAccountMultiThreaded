@@ -40,3 +40,6 @@ resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/release
 
 libraryDependencies ++= Seq("com.typesafe.akka" %% "akka-actor" % "2.2.3",
                             "com.typesafe.akka" %% "akka-testkit" % "2.2.3")
+
+libraryDependencies ++= Seq("com.ning" % "async-http-client" % "1.7.19",
+                            "ch.qos.logback" % "logback-classic" % "1.0.7")
