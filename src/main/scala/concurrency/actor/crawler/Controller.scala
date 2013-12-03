@@ -1,6 +1,6 @@
 package concurrency.actor
 
-import akka.actor.{Actor, Props, ActorRef, ReceiveTimeout}
+import akka.actor.{Actor, Props, ActorRef, ReceiveTimeout, ActorLogging}
 import scala.concurrent.duration._
 
 object Controller {
@@ -22,6 +22,7 @@ class Controller extends Actor {
   def receive = {
     case Check(url, depth) =>
       if(!cache(url) && depth > 0) // spawn a new Getter in charge of retrieving the url's content
+      log.debug("{} checking {}", depth, url)
         children += context.actorOf(Props(new Getter(url, depth - 1)))
       cache += url
     case Getter.Done       => //
