@@ -19,16 +19,14 @@ class CrawlerMain extends Actor {
 
   def receive = {
     case ReceiveTimeout =>
-      println("Failure by timeout!")
+      println("Fetch $url timeout!")
       context.stop(self)
 
     case Result(url, links) =>
-      println(s"$url -> $links")
-      context.stop(self)
+      println(links.toVector.sorted.mkString(s"Results for '$url':\n", "\n", "\n"))
 
     case Failed(url) =>
-      println("Failure by error")
-      context.stop(self)
+      println(s"Fetch $url failed!")
   }
 
   override def postStop(): Unit = {
