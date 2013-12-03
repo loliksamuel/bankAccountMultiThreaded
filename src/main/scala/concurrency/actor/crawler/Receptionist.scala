@@ -20,7 +20,7 @@ class Receptionist extends Actor {
   val waiting: Receive = {
     // First reception of a Get, we enqueue our first job
     case Get(url) =>
-      context.become(running(Vector(Job(sender, url))))
+      context.become(runNext(Vector(Job(sender, url))))
   }
 
   def running(queue: Vector[Job]): Receive = {
