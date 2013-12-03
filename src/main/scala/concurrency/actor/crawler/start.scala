@@ -24,4 +24,13 @@ object WebClient {
                   }, exec)
     p.future
   }
+
+  def shutdown(): Unit = client.close()
+}
+
+object webClientTryout extends Application {
+  import scala.concurrent.ExecutionContext.Implicits.global
+
+  val url = "http://www.google.fr"
+  WebClient get url map println foreach (_ => WebClient.shutdown())
 }
