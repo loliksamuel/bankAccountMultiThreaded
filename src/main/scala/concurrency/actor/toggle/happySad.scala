@@ -26,6 +26,7 @@ import akka.testkit.{TestProbe, TestKit, ImplicitSender}
 import scala.concurrent.duration._
 
 object ToggleTest extends Application {
+  // First sample
   implicit val system = ActorSystem("TestSys")
   val toggle = system.actorOf(Props[Toggle])
   val p = TestProbe()
@@ -40,4 +41,19 @@ object ToggleTest extends Application {
   p.expectNoMsg(1.second)
 
   system.shutdown
+
+  // running inside a TestKit
+  new TestKit(ActorSystem("TestSys")) with ImplicitSender {
+    val toggle = system.actorOf(Props[Toggle])
+    toggle ! "How are you?"
+    expectMsg("happy")
+    toggle ! "How are you?"
+    expectMsg("sad")
+    toggle ! "unknown"
+    expectNoMsg(1.second)
+    system.shutdown()
+  }
+
+  println("done")
+
 }
