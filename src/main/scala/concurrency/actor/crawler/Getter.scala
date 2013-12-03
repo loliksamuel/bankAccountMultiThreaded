@@ -1,6 +1,16 @@
 package concurrency.actor
 
+import akka.actor.{Actor, Status}
+import akka.pattern.pipe
+import java.util.concurrent.Executor
+import scala.concurrent.ExecutionContext
+import scala.concurrent._
+
 object Getter {
+  case object Done
+  case object Abort
+
+//  case
   val A_TAG = "(?i)<a ([^>]+)>.+?</a>".r
   val HREF_ATTR = """\s*(?i)href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^'">\s]+))\s*""".r
 
@@ -11,6 +21,28 @@ object Getter {
     } yield if (dquot != null) dquot
     else if (quot != null) quot
     else bare
+  }
+}
+
+class Getter(url: String, depth: Int) extends Actor {
+  import Getter._
+
+  // flawed design in akka for the moment
+  implicit val exec = context.dispatcher.asInstanceOf[Executor with ExecutionContext]
+
+  // compute the http request in future, when done, sends to itself the result (cf. receive method)
+  val requestFuture = WebClient get url pipeTo self
+
+  def receive = {
+    case body: String => // send as much checks to the controller as there are links
+                         for(link <- findLinks(body)) context.parent ! Controller.Check(link, depth)
+                         stop()
+    case _            => stop()
+  }
+
+  def stop(): Unit = {
+    context.parent ! Done
+    context.stop(self)
   }
 }
 
