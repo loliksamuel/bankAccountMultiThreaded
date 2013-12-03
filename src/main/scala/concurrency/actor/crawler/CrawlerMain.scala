@@ -9,10 +9,9 @@ class CrawlerMain extends Actor {
 
   val receptionist = context.actorOf(Props[Receptionist], "receptionist")
 
-  receptionist ! Get("http://www.google.com/1")
-  receptionist ! Get("http://www.google.com/2")
-  receptionist ! Get("http://www.google.com/3")
-  receptionist ! Get("http://www.google.com/4")
+  receptionist ! Get("http://adumont.fr/blog")
+  receptionist ! Get("http://adumont.fr")
+  receptionist ! Get("http://github.com/ardumont")
 
   context.system.scheduler.scheduleOnce(10.seconds, self, ReceiveTimeout)
 
