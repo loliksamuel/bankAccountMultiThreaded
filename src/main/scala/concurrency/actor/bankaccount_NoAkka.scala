@@ -26,7 +26,7 @@ class Account {
   def deposit(ammount: Int): Boolean = {
     if (ammount < 0) false
     else {
-      this.synchronized {/// to make it thread safe! we need to use synchronize or lock mechanism
+      this.synchronized {// to make it thread safe! we need to use synchronize or lock mechanism
         _balance += ammount
       }
       true
@@ -37,7 +37,7 @@ class Account {
   def withdraw(ammount: Int): Boolean = {
     if (ammount < 0 || ammount > _balance) false
     else {
-      _balance -= ammount
+      _balance -= ammount// risk!! not thread safe! we need to use synchronize or lock mechanism
       true
     }
 
